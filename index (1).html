@@ -1,74 +1,1413 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LIFEQUEST</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#fbf5e6">
+<meta name="description" content="LIFEQUEST – turn your life into an adventure. Complete real-world quests, earn XP, level up and explore with friends.">
+<title>LIFEQUEST – Turn your life into an adventure</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B1%3C/text%3E%3C/svg%3E">
 <style>
-:root{--bg:#101015;--p:#1b1a24;--p2:#272431;--line:#383442;--txt:#f4f1fa;--muted:#aaa4b5;--violet:#b49aff;--green:#91e3a5;--gold:#f2c66d}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 20% 0,#302444,transparent 38%),var(--bg);color:var(--txt);font:15px system-ui;padding:22px}.app{max-width:1100px;margin:auto}.top,.welcome,.head,.quest,.foot{display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{font-weight:950;letter-spacing:2px;font-size:22px}.brand span,.eyebrow{color:var(--violet)}.muted,small{color:var(--muted)}.layout{display:grid;grid-template-columns:190px 1fr;gap:18px;margin-top:22px}.panel,.sidebar,.stat{background:var(--p);border:1px solid var(--line);border-radius:16px;padding:16px}.sidebar{height:max-content}.nav button{display:block;width:100%;text-align:left;padding:12px;margin:3px 0;border:0;border-radius:10px;background:none;color:var(--muted);cursor:pointer}.nav button.active,.nav button:hover{background:#352b47;color:white}.page{display:none}.page.active{display:block}.welcome{margin:8px 0 18px}.welcome h1{font-size:34px;margin:5px 0}.eyebrow{text-transform:uppercase;font-size:11px;letter-spacing:1.5px;font-weight:bold}.btn{border:0;border-radius:10px;padding:10px 14px;background:var(--violet);color:#17121f;font-weight:800;cursor:pointer}.btn.alt,.done{background:var(--p2);color:var(--txt);border:1px solid var(--line)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}.stat label{font-size:11px;color:var(--muted)}.stat strong{display:block;font-size:25px}.bar{height:8px;background:#3a3542;border-radius:9px;overflow:hidden;margin-top:10px}.bar i{display:block;height:100%;background:var(--violet)}.cols{display:grid;grid-template-columns:1.2fr .8fr;gap:12px}.panel{margin-bottom:12px}.head h2,.panel h2{font-size:17px;margin:0}.quest{border-top:1px solid var(--line);padding:12px 0}.quest:first-of-type{border:0}.ico{background:#382d4b;border-radius:11px;padding:10px;font-size:20px}.qbody{flex:1}.qbody b{display:block}.xp{color:var(--green);font-weight:bold;white-space:nowrap}.done{padding:8px 10px;border-radius:9px;cursor:pointer}.chip{font-size:10px;text-transform:uppercase;color:#d3c4ff;background:#392e4d;padding:4px 7px;border-radius:20px}.legend{color:var(--gold);background:#493a21}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.qcard{background:var(--p2);border:1px solid var(--line);border-radius:13px;padding:13px}.qcard h3{font-size:15px}.qcard p{font-size:12px;color:var(--muted);min-height:32px}.field{background:#111018;border:1px solid var(--line);color:white;border-radius:9px;padding:11px;width:100%;margin:6px 0}.row{display:flex;gap:8px}.row>*{flex:1}.notice{background:#292439;padding:12px;border-radius:10px;color:#d4cbe5;font-size:12px}.empty{padding:20px;text-align:center;color:var(--muted)}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#eee7ff;color:#17121f;padding:12px 18px;border-radius:12px;display:none;font-weight:bold}.chatlog{height:230px;overflow:auto;background:#111018;border:1px solid var(--line);border-radius:10px;padding:10px;margin:10px 0}.bubble{background:var(--p2);border:1px solid var(--line);padding:9px 11px;border-radius:12px;margin:7px 0;max-width:85%}.bubble.mine{margin-left:auto;border-color:#66558a}.bubble small{display:block;font-size:10px;margin-top:4px}.lockscreen{position:fixed;inset:0;z-index:50;background:radial-gradient(ellipse at 50% 15%,#3b2c53,#101015 65%);display:none;align-items:center;justify-content:center;padding:22px}.lockscreen.show{display:flex}.lockcard{max-width:520px;width:100%;text-align:center;background:#1b1a24;border:1px solid #66558a;border-radius:22px;padding:32px;box-shadow:0 20px 80px #0009}.lockcard h1{font-size:34px;margin:10px 0}.lockcard p{color:var(--muted);line-height:1.6}.lockicon{font-size:48px}.plan{border-top:1px solid var(--line);padding:12px 0}.footer{text-align:center;color:#77717f;font-size:11px;margin:18px}
-@media(max-width:700px){body{padding:12px}.layout{grid-template-columns:1fr}.nav{display:flex;overflow:auto}.nav button{white-space:nowrap;width:auto}.cols{grid-template-columns:1fr}.welcome{align-items:flex-start;flex-direction:column}.welcome h1{font-size:28px}}
-@media(max-width:430px){.cards{grid-template-columns:1fr}.stats{gap:6px}.stat{padding:10px}.stat strong{font-size:20px}}
-</style></head><body><div class="app">
-<header class="top"><div><div class="brand">LIFE<span>QUEST</span></div><small>YOUR LIFE, LEVELLED UP.</small></div><span id="rankPill" class="muted">LVL 1 · NPC</span></header>
-<div class="layout"><aside class="sidebar"><nav class="nav">
-<button class="active" data-page="home">⌂ Home</button><button data-page="quests">⚔ Quests</button><button data-page="explore">⌖ Explore</button><button data-page="friends">♧ Social hub</button><button data-page="profile">◉ Profile</button><button data-page="inventory">▣ Inventory</button>
-</nav></aside><main>
-<section id="home" class="page active"><div class="welcome"><div><div class="eyebrow">YOUR NEXT ADVENTURE STARTS HERE</div><h1>Ready for a quest?</h1><div class="muted">Small actions. Real-world adventures. Actual progress.</div></div><button class="btn" onclick="generate()">＋ Give me a quest</button></div>
-<div class="stats"><div class="stat"><label>LEVEL</label><strong id="level">1</strong><small id="rank">NPC</small></div><div class="stat"><label>TOTAL XP</label><strong id="xp">0</strong><small>Experience earned</small></div><div class="stat"><label>QUESTS DONE</label><strong id="count">0</strong><small>Real life, not just the app</small></div></div>
-<div class="panel"><div class="head"><h2>Level progress</h2><small id="progressText">0 / 100 XP</small></div><div class="bar"><i id="progress" style="width:0%"></i></div></div>
-<div class="cols"><div class="panel"><div class="head"><h2>Today's quests</h2><button class="btn alt" onclick="page('quests')">View all</button></div><div id="homeQuests"></div></div><div><div class="panel"><h2>Quick actions</h2><p><button class="btn alt" onclick="generate()">🎲 Random quest</button> <button class="btn alt" onclick="surprise()">✦ Surprise me</button></p><p><button class="btn alt" onclick="page('explore')">⌖ Explore</button> <button class="btn alt" onclick="page('friends')">♧ Party up</button></p></div><div class="panel"><h2>Adventure reminder</h2><p class="muted">Choose a quest, put your phone away, and go do it. Come back when you're finished to claim XP.</p></div></div></div></section>
-<section id="quests" class="page"><div class="welcome"><div><div class="eyebrow">MISSION BOARD</div><h1>Quest log</h1><div class="muted">Pick something worth doing. Complete it offline.</div></div><button class="btn" onclick="generate()">＋ Generate quest</button></div>
-<div class="panel"><h2>Make your own quest</h2><div class="row"><input id="custom" class="field" placeholder="e.g. Walk a new route"><select id="kind" class="field"><option>Side quest</option><option>Daily</option><option>Stupid quest</option><option>Legendary</option></select><button class="btn" onclick="customQuest()">Add</button></div></div>
-<div class="panel"><h2>Available quests</h2><div id="allQuests" class="cards"></div></div><div class="panel"><h2>Completed quests</h2><div id="completed"></div></div></section>
-<section id="explore" class="page"><div class="welcome"><div><div class="eyebrow">GET OUT THERE</div><h1>Explore mode</h1><div class="muted">Discover your surroundings without staring at a map.</div></div></div><div class="panel"><h2>Discovery quests</h2><div id="exploreList"></div><div class="notice">Stay in public places, follow local rules, tell someone where you're going, and avoid restricted areas.</div></div><div class="panel"><h2>Save a place to explore</h2><input id="placeInput" class="field" placeholder="A park, library, walking track..."><button class="btn" onclick="addPlace()">Save discovery</button><div id="places" class="muted"></div></div></section>
-<section id="friends" class="page"><div class="welcome"><div><div class="eyebrow">BETTER TOGETHER</div><h1>Party hub</h1><div class="muted">Turn ordinary plans into shared quests.</div></div></div><div class="panel"><h2>Make a plan</h2><p class="muted">Set up a hangout or group adventure. This demo saves plans on this device.</p><input id="planTitle" class="field" placeholder="e.g. Friday night mini adventure"><input id="planWhen" class="field" placeholder="When? e.g. Saturday, 6 pm"><input id="planWhere" class="field" placeholder="Public meeting place (no home addresses)"><input id="planWho" class="field" placeholder="Who is invited? e.g. Alex, Sam, Jordan"><button class="btn" onclick="createPlan()">＋ Create plan</button><div id="plans"></div></div>
-<div class="panel"><h2>Party chat</h2><div class="notice">Demo chat only: messages stay in this browser and are not sent to other people. Never post private details. Meet in public places, make sure a trusted adult knows your plans, and organise your own safe way home.</div><div id="chatlog" class="chatlog"></div><div class="row"><input id="chatInput" class="field" placeholder="Write a message..." maxlength="240"><button class="btn" onclick="sendChat()">Send</button></div></div>
-<div class="panel"><h2>Your party</h2><div class="quest"><b>🧭 You</b><span class="xp" id="friendXP">0 XP</span></div><div class="notice">Live chat, real invitations and shared accounts need an online backend. This is a local interactive prototype.</div></div></section>
-<section id="profile" class="page"><div class="welcome"><div><div class="eyebrow">CHARACTER SHEET</div><h1>Your profile</h1></div></div><div class="panel"><div style="font-size:35px">🧙</div><h2>Adventurer</h2><p id="profileRank" class="muted">NPC · Level 1</p><div class="bar"><i id="profileProgress"></i></div><p id="profileStats" class="muted"></p></div><div class="panel"><h2>Achievements</h2><div id="achievements"></div></div></section>
-<section id="inventory" class="page"><div class="welcome"><div><div class="eyebrow">YOUR COLLECTION</div><h1>Inventory</h1><div class="muted">Rewards earned through real-world quests.</div></div></div><div class="panel"><h2>Collected quest tokens</h2><div id="items" style="font-size:28px;line-height:2"></div></div></section>
-</main></div><div class="footer">LIFEQUEST MVP · Saved on this device · Go live your adventure.</div></div><div id="questLock" class="lockscreen"><div class="lockcard"><div class="lockicon">⚔</div><div class="eyebrow">QUEST IN PROGRESS</div><h1>Go live your quest.</h1><p id="lockQuestTitle">Your active quest</p><p>Put your phone away and focus on the real-world adventure. Your progress will be here when you return.</p><button class="btn" onclick="finishActive()">✓ I finished my quest</button><p><button class="done" onclick="exitQuestMode()">Pause / exit quest mode</button></p><small>Always keep access to your phone if you need help or feel uncomfortable.</small></div></div><div id="toast" class="toast"></div>
+/* ==========================================================
+   LIFEQUEST – cosy life-simulation theme
+   Warm cream, sage and pastel palette. Original artwork only.
+   ========================================================== */
+:root{
+  --cream:#fbf5e6; --cream-2:#f4ead2; --card:#fffdf7;
+  --sage:#8fb08a; --sage-d:#55794f; --sage-dd:#3f5e3b;
+  --leaf:#e1eed8; --leaf-2:#c9e0c1;
+  --peach:#fadfc6; --sky:#d5eaec; --pink:#f8dcdc; --butter:#f8ecb8; --lilac:#e6dcf3;
+  --ink:#4b4033; --muted:#7b6e5a; --line:#eadfc4;
+  --danger:#a1473f; --danger-bg:#f9dedb;
+  --shadow:0 6px 18px rgba(124,101,58,.13);
+  --shadow-sm:0 2px 8px rgba(124,101,58,.10);
+  --radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);background:var(--cream);
+  font-family:"Nunito","Varela Round","Avenir Next Rounded","Trebuchet MS",ui-rounded,system-ui,sans-serif;
+  font-size:16px;line-height:1.5;padding-bottom:104px;
+  background-image:
+    radial-gradient(circle at 10% 6%,#eaf3df 0,transparent 30%),
+    radial-gradient(circle at 92% 18%,#fdecd3 0,transparent 28%),
+    radial-gradient(circle at 70% 95%,#e3f0ee 0,transparent 30%);
+  background-attachment:fixed;
+}
+h1,h2,h3{font-family:inherit;margin:0;line-height:1.2}
+h1{font-size:1.75rem;color:var(--sage-dd)}
+h2{font-size:1.15rem;margin-bottom:12px;color:var(--sage-dd)}
+h3{font-size:1.02rem}
+p{margin:0 0 .6em}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid #f0b95c;outline-offset:2px;border-radius:12px}
+.hint,.muted{color:var(--muted)}
+.hint{font-size:.88rem}
+
+/* Decorative drifting leaves */
+.bgdeco{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.bgdeco svg{position:absolute;opacity:.5;animation:sway 7s ease-in-out infinite}
+.bgdeco .l1{width:70px;left:-14px;top:140px;color:var(--leaf-2);transform-origin:0 100%}
+.bgdeco .l2{width:56px;right:10px;top:300px;color:#f3d9b8;animation-delay:-2s}
+.bgdeco .l3{width:90px;left:4%;bottom:120px;color:var(--leaf);animation-delay:-4s}
+.bgdeco .f1{width:46px;right:6%;bottom:180px;color:#f6d1d1;animation-delay:-1s}
+.bgdeco .f2{width:38px;left:8%;top:44%;color:#f7e6a7;animation-delay:-3s}
+@keyframes sway{0%,100%{transform:rotate(-6deg) translateY(0)}50%{transform:rotate(7deg) translateY(-8px)}}
+
+.app{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:18px 16px 0}
+
+/* Header */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo svg{width:38px;height:38px;color:var(--sage-d)}
+.logo b{font-size:1.45rem;letter-spacing:.16em;color:var(--sage-dd)}
+.logo b span{color:#d98b5f}
+.logo small{display:block;font-size:.7rem;letter-spacing:.08em;color:var(--muted);margin-top:-2px}
+.pill{background:var(--card);border:2px solid var(--leaf-2);border-radius:999px;padding:6px 14px;font-weight:800;font-size:.88rem;color:var(--sage-dd);box-shadow:var(--shadow-sm);white-space:nowrap}
+
+/* Navigation: bottom bar on mobile, top pills on desktop */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:space-around;gap:4px;
+  background:rgba(255,253,247,.96);backdrop-filter:blur(8px);border-top:2px solid var(--line);
+  padding:8px 8px calc(8px + env(safe-area-inset-bottom))}
+.nav button{flex:1;max-width:120px;border:0;background:none;border-radius:16px;padding:6px 2px;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:1px;font-weight:800;font-size:.72rem;color:var(--muted);transition:background .2s,transform .2s}
+.nav button span{font-size:1.4rem;line-height:1.2}
+.nav button:hover{background:var(--leaf);transform:translateY(-2px)}
+.nav button[aria-current="page"]{background:var(--leaf-2);color:var(--sage-dd)}
+@media(min-width:760px){
+  body{padding-bottom:40px}
+  .nav{position:sticky;top:10px;bottom:auto;border:2px solid var(--line);border-radius:999px;margin:6px auto 22px;
+    max-width:560px;padding:6px;box-shadow:var(--shadow);z-index:20}
+  .nav button{flex-direction:row;justify-content:center;gap:6px;font-size:.92rem;padding:8px 10px;max-width:none}
+  .nav button span{font-size:1.15rem}
+}
+
+/* Views */
+.view{display:none}
+.view.active{display:block;animation:fadeUp .4s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.pagehead{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:6px 0 16px}
+.pagehead p{margin:2px 0 0;color:var(--muted)}
+
+/* Cards and buttons */
+.card{background:var(--card);border:2px solid var(--line);border-radius:var(--radius);padding:18px;margin-bottom:16px;box-shadow:var(--shadow)}
+.card.hero{background:linear-gradient(135deg,#f0f7e6,#fff8e8);border-color:var(--leaf-2);position:relative;overflow:hidden}
+.card.hero .deco{position:absolute;right:-10px;top:-10px;width:110px;color:#f4d6d6;opacity:.7;transform:rotate(14deg)}
+.btn{border:0;border-radius:999px;background:var(--sage-d);color:#fff;font-weight:800;padding:10px 18px;cursor:pointer;
+  box-shadow:0 3px 0 var(--sage-dd);transition:transform .15s,box-shadow .15s,filter .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--sage-dd)}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--sage-dd)}
+.btn.soft{background:var(--leaf);color:var(--sage-dd);box-shadow:0 3px 0 var(--leaf-2)}
+.btn.soft:hover{box-shadow:0 5px 0 var(--leaf-2)}
+.btn.ghost{background:transparent;color:var(--muted);box-shadow:none;border:2px solid var(--line)}
+.btn.ghost:hover{background:var(--cream-2);box-shadow:none}
+.btn.danger{background:var(--danger-bg);color:var(--danger);box-shadow:0 3px 0 #efc3be}
+.btn.small{padding:6px 13px;font-size:.88rem}
+.btn[disabled]{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+
+/* Forms */
+.field,select.field,textarea.field{width:100%;border:2px solid var(--line);background:#fffefa;border-radius:16px;padding:10px 14px;margin:4px 0 10px}
+.field:focus{border-color:var(--sage);outline:none}
+label{font-weight:800;font-size:.86rem;color:var(--sage-dd)}
+.formrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.formrow{grid-template-columns:1fr}}
+.check{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--ink);font-size:.95rem;padding:4px 0}
+.check input{width:20px;height:20px;accent-color:var(--sage-d)}
+
+/* Progress bar */
+.bar{height:16px;background:#efe6cc;border-radius:999px;overflow:hidden;border:2px solid #e6dbbb}
+.bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#9fc496,#6e9a68);transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.barlabel{display:flex;justify-content:space-between;font-size:.85rem;font-weight:800;color:var(--muted);margin:8px 0 4px}
+
+/* Chips and tags */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 14px}
+.chip{border:2px solid var(--line);background:var(--card);border-radius:999px;padding:6px 13px;font-weight:800;font-size:.86rem;color:var(--muted);cursor:pointer;transition:all .2s}
+.chip:hover{background:var(--leaf)}
+.chip.on{background:var(--leaf-2);border-color:var(--sage);color:var(--sage-dd)}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.tag{font-size:.72rem;font-weight:800;padding:2px 10px;border-radius:999px;background:var(--leaf);color:var(--sage-dd)}
+.tag.Easy{background:var(--sky);color:#37707a}
+.tag.Medium{background:var(--butter);color:#7d6410}
+.tag.Hard{background:var(--pink);color:#9b4040}
+.tag.group{background:var(--lilac);color:#5f4a86}
+
+/* Grids */
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+.tiles{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));margin-bottom:16px}
+.tile{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:14px;text-align:center;box-shadow:var(--shadow-sm)}
+.tile b{display:block;font-size:1.6rem;color:var(--sage-dd)}
+.tile span{font-size:.8rem;color:var(--muted);font-weight:700}
+.cols{display:grid;gap:16px}
+@media(min-width:900px){.cols{grid-template-columns:1fr 1fr;align-items:start}}
+
+/* Quest cards */
+.qcard{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:16px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:8px;transition:transform .2s,box-shadow .2s}
+.qcard:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.qcard.c-exp{border-top:6px solid #b5d7dd}
+.qcard.c-soc{border-top:6px solid #f1b9b9}
+.qcard.c-per{border-top:6px solid #cdbbe6}
+.qcard.c-fit{border-top:6px solid #a9cf9f}
+.qtop{display:flex;gap:12px;align-items:flex-start}
+.qicon{font-size:1.7rem;width:50px;height:50px;border-radius:16px;background:var(--cream-2);display:grid;place-items:center;flex:none}
+.qcard p{color:var(--muted);font-size:.92rem;margin:0;flex:1}
+.qfoot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.xp{font-weight:900;color:var(--sage-d);background:var(--leaf);border-radius:999px;padding:3px 12px;font-size:.9rem;white-space:nowrap}
+.row{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:2px dashed var(--line)}
+.row:first-child{border-top:0}
+.row .grow{flex:1;min-width:0}
+.row .grow b{display:block;overflow-wrap:anywhere}
+.row small{color:var(--muted)}
+.empty{text-align:center;color:var(--muted);padding:22px 10px;border:2px dashed var(--line);border-radius:18px;grid-column:1/-1}
+.banner{background:var(--butter);border:2px solid #efdc8a;border-radius:18px;padding:12px 16px;margin-bottom:16px;font-size:.92rem}
+.notice{background:var(--sky);border-radius:16px;padding:10px 14px;font-size:.88rem;color:#32616a;margin-top:10px}
+
+/* Avatars and friends */
+.avatar{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-size:1.5rem;background:var(--peach);border:3px solid #fff;box-shadow:var(--shadow-sm);position:relative;flex:none}
+.avatar.big{width:84px;height:84px;font-size:2.8rem}
+.dot{position:absolute;right:-1px;bottom:-1px;width:14px;height:14px;border-radius:50%;border:3px solid #fff;background:#c7bfae}
+.dot.on{background:#6ec27a}
+.members{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:12px}
+.member{border:2px solid var(--line);border-radius:18px;padding:12px 8px;text-align:center;background:#fffefa;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.88rem}
+.member b{overflow-wrap:anywhere}
+.member.slot{border-style:dashed;color:var(--muted);justify-content:center;min-height:110px}
+.member.pending{border-style:dashed;background:var(--butter)}
+.avatars{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:8px 0 14px}
+.avatars button{border:3px solid transparent;border-radius:50%;background:var(--cream-2);font-size:1.6rem;aspect-ratio:1;cursor:pointer;transition:transform .15s}
+.avatars button:hover{transform:scale(1.1)}
+.avatars button.on{border-color:var(--sage-d);background:var(--leaf-2)}
+
+/* Achievements and inventory */
+.ach{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.achcard{border:2px solid var(--line);border-radius:18px;padding:12px;display:flex;gap:12px;align-items:center;background:#fffefa}
+.achcard .qicon{background:var(--butter)}
+.achcard.locked{opacity:.65;filter:grayscale(.8)}
+.achcard small{color:var(--muted);display:block}
+.inv{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
+.item{text-align:center;border:2px solid var(--line);border-radius:18px;padding:10px 6px;background:#fffefa}
+.item span{font-size:1.9rem;display:block}
+.item small{display:block;color:var(--muted)}
+.catbar{display:grid;grid-template-columns:150px 1fr 30px;gap:8px;align-items:center;margin:8px 0;font-size:.88rem;font-weight:700}
+@media(max-width:480px){.catbar{grid-template-columns:110px 1fr 26px}}
+
+/* Chat */
+.chatlog{height:190px;overflow:auto;background:#fffefa;border:2px solid var(--line);border-radius:16px;padding:10px;margin-bottom:10px}
+.bubble{background:var(--leaf);border-radius:16px 16px 4px 16px;padding:8px 12px;margin:6px 0 6px auto;max-width:85%;width:fit-content;overflow-wrap:anywhere}
+.bubble small{display:block;font-size:.7rem;color:var(--muted)}
+
+/* Modal */
+.modal{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(75,64,51,.45);backdrop-filter:blur(3px);animation:fade .2s}
+.modal[hidden]{display:none}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.modalcard{position:relative;background:var(--card);border-radius:30px;max-width:520px;width:100%;max-height:92vh;overflow:auto;padding:26px;box-shadow:0 20px 60px rgba(75,64,51,.3);animation:pop .35s cubic-bezier(.2,1.2,.3,1)}
+@keyframes pop{from{opacity:0;transform:scale(.88) translateY(12px)}to{opacity:1;transform:none}}
+.modalcard h2{font-size:1.4rem}
+.center{text-align:center}
+.bigicon{font-size:4rem;display:inline-block;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.gain{font-size:2.2rem;font-weight:900;color:var(--sage-d);margin:6px 0}
+.levelup{background:var(--butter);border-radius:16px;padding:10px;font-weight:800;margin:10px 0}
+.petal{position:fixed;top:-30px;font-size:1.4rem;pointer-events:none;animation:fall linear forwards;z-index:60}
+@keyframes fall{to{transform:translateY(105vh) rotate(360deg);opacity:.9}}
+.steps{text-align:left;background:var(--cream-2);border-radius:18px;padding:12px 16px;margin:12px 0;font-size:.93rem}
+.steps li{margin:3px 0}
+
+/* Toast */
+.toast{position:fixed;left:50%;bottom:100px;transform:translate(-50%,20px);background:var(--sage-dd);color:#fff;padding:11px 20px;border-radius:999px;
+  font-weight:800;z-index:70;opacity:0;pointer-events:none;transition:all .3s;max-width:90vw;text-align:center;box-shadow:var(--shadow)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(min-width:760px){.toast{bottom:30px}}
+
+details.card summary{cursor:pointer;font-weight:800;color:var(--sage-dd)}
+details.card[open] summary{margin-bottom:10px}
+footer{text-align:center;color:var(--muted);font-size:.8rem;padding:22px 0 8px}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<!-- Reusable decorative shapes (original artwork) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="leaf" viewBox="0 0 24 24"><path d="M4 20C4 10 10 4 21 3c0 11-6 17-17 17z" fill="currentColor"/><path d="M5 19L15 9" stroke="#ffffff" stroke-opacity=".55" stroke-width="1.2" fill="none" stroke-linecap="round"/></symbol>
+  <symbol id="flower" viewBox="0 0 32 32"><g fill="currentColor"><circle cx="16" cy="8" r="6"/><circle cx="24" cy="14" r="6"/><circle cx="21" cy="24" r="6"/><circle cx="11" cy="24" r="6"/><circle cx="8" cy="14" r="6"/></g><circle cx="16" cy="17" r="5" fill="#f5cf68"/></symbol>
+  <symbol id="sprout" viewBox="0 0 40 40"><path d="M20 36V20" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M20 22C20 13 14 8 6 8c0 9 5 14 14 14z" fill="currentColor"/><path d="M20 20c0-7 4-11 13-12 0 8-5 12-13 12z" fill="currentColor" opacity=".7"/></symbol>
+</svg>
+<div class="bgdeco" aria-hidden="true">
+  <svg class="l1" viewBox="0 0 24 24"><use href="#leaf"/></svg>
+  <svg class="l2" viewBox="0 0 24 24"><use href="#leaf"/></svg>
+  <svg class="l3" viewBox="0 0 24 24"><use href="#leaf"/></svg>
+  <svg class="f1" viewBox="0 0 32 32"><use href="#flower"/></svg>
+  <svg class="f2" viewBox="0 0 32 32"><use href="#flower"/></svg>
+</div>
+
+<div class="app">
+  <header class="top">
+    <div class="logo">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><use href="#sprout"/></svg>
+      <div><b>LIFE<span>QUEST</span></b><small>YOUR LIFE, AS AN ADVENTURE</small></div>
+    </div>
+    <div class="pill" id="levelPill">Lv 1</div>
+  </header>
+
+  <nav class="nav" id="nav" aria-label="Main navigation"></nav>
+
+  <main>
+    <!-- HOME -->
+    <section class="view active" id="view-home"></section>
+
+    <!-- QUESTS -->
+    <section class="view" id="view-quests">
+      <div class="pagehead">
+        <div><h1>Quest Board</h1><p>Pick something worth doing, then go do it in the real world.</p></div>
+        <button class="btn" data-act="random">🎲 Random quest</button>
+      </div>
+      <div class="card">
+        <h2>✏️ Create your own quest</h2>
+        <form id="customForm" autocomplete="off">
+          <label for="cqName">Quest name</label>
+          <input class="field" id="cqName" maxlength="60" placeholder="e.g. Walk the long way home" required>
+          <label for="cqDesc">What do you need to do? (optional)</label>
+          <input class="field" id="cqDesc" maxlength="160" placeholder="A short description">
+          <div class="formrow">
+            <div><label for="cqCat">Category</label>
+              <select class="field" id="cqCat"></select></div>
+            <div><label for="cqDiff">Difficulty</label>
+              <select class="field" id="cqDiff">
+                <option value="Easy">Easy · 20 XP</option>
+                <option value="Medium" selected>Medium · 45 XP</option>
+                <option value="Hard">Hard · 90 XP</option>
+              </select></div>
+          </div>
+          <button class="btn" type="submit">＋ Add to my board</button>
+        </form>
+      </div>
+      <div class="chips" id="questFilters" role="group" aria-label="Filter quests"></div>
+      <h2>📜 Available quests (<span id="availCount">0</span>)</h2>
+      <div class="grid" id="availableList"></div>
+      <div class="card" style="margin-top:18px"><h2>🏅 Completed quests</h2><div id="completedList"></div></div>
+      <details class="card" id="removedBox">
+        <summary>🗑️ Removed quests (<span id="removedCount">0</span>)</summary>
+        <p class="hint">Removed quests never gave XP. You can bring one back if you change your mind.</p>
+        <div id="removedList"></div>
+      </details>
+    </section>
+
+    <!-- EXPLORE -->
+    <section class="view" id="view-explore">
+      <div class="pagehead"><div><h1>Explore</h1><p>Get curious about the world around you.</p></div>
+        <button class="btn" data-act="surprise">✨ Surprise me</button></div>
+      <div id="surpriseBox"></div>
+      <div class="chips" id="exploreFilters" role="group" aria-label="Filter ideas"></div>
+      <div class="grid" id="exploreList"></div>
+      <h2 style="margin-top:22px">🔍 Scavenger hunts</h2>
+      <div class="grid" id="huntList"></div>
+      <div class="card" style="margin-top:18px">
+        <h2>📍 Places I want to explore</h2>
+        <form id="placeForm" autocomplete="off">
+          <div class="formrow" style="grid-template-columns:1fr auto;align-items:end">
+            <div><label for="placeInput">Name a park, library, trail or café</label>
+              <input class="field" id="placeInput" maxlength="80" placeholder="e.g. The old botanic garden" style="margin-bottom:0"></div>
+            <button class="btn" type="submit">Save</button>
+          </div>
+        </form>
+        <div id="placeList" style="margin-top:8px"></div>
+      </div>
+      <div class="notice">🌿 Stay in public places, follow local rules and signs, let someone you trust know where you are going, and keep your phone charged in case you need help. No live location is used – suggestions are hand-written ideas.</div>
+    </section>
+
+    <!-- FRIENDS -->
+    <section class="view" id="view-friends">
+      <div class="pagehead"><div><h1>Friends &amp; Party</h1><p>Adventures are better together.</p></div></div>
+      <div class="banner">🧪 <b>Prototype mode.</b> Your friends here are demo characters saved on this device, and invitations are simulated locally. This is <b>not</b> real online multiplayer yet – real accounts and live invites need a backend such as Firebase or Supabase. The code is organised so one can be added later.</div>
+      <div class="cols">
+        <div>
+          <div class="card"><h2>🎈 Party lobby</h2><div id="partyBox"></div></div>
+          <div class="card"><h2>🗺️ Group quests</h2><div id="groupBox"></div></div>
+          <div class="card">
+            <h2>📅 Plan an outing</h2>
+            <form id="planForm" autocomplete="off">
+              <label for="planTitle">What's the plan?</label>
+              <input class="field" id="planTitle" maxlength="70" placeholder="e.g. Saturday picnic in the park" required>
+              <div class="formrow">
+                <div><label for="planWhen">When?</label><input class="field" id="planWhen" maxlength="50" placeholder="Saturday, 2 pm" required></div>
+                <div><label for="planWhere">Where? (public place)</label><input class="field" id="planWhere" maxlength="70" placeholder="Park, library, café…" required></div>
+              </div>
+              <label>Invite</label>
+              <div id="planInvitees"></div>
+              <button class="btn" type="submit" style="margin-top:8px">＋ Save plan</button>
+            </form>
+            <div class="hint" style="margin-top:8px">Please use public meeting places only – never home addresses.</div>
+            <div id="planList"></div>
+          </div>
+          <div class="card">
+            <h2>💬 Party chat (local demo)</h2>
+            <div class="notice" style="margin:0 0 10px">Messages stay in this browser and are not sent to anyone. Don't write private details here.</div>
+            <div class="chatlog" id="chatLog" aria-live="polite"></div>
+            <form id="chatForm" class="formrow" style="grid-template-columns:1fr auto;align-items:center" autocomplete="off">
+              <input class="field" id="chatInput" maxlength="240" placeholder="Suggest an adventure…" style="margin:0" aria-label="Chat message">
+              <button class="btn" type="submit">Send</button>
+            </form>
+            <button class="btn ghost small" data-act="clearChat" style="margin-top:10px">Clear chat</button>
+          </div>
+        </div>
+        <div>
+          <div class="card"><h2>🫂 Your friends</h2><div id="friendList"></div></div>
+          <div class="card"><h2>💌 Friend requests</h2><div id="requestList"></div></div>
+          <div class="card">
+            <h2>🔎 Find friends</h2>
+            <form id="searchForm" autocomplete="off">
+              <label for="searchInput">Search by username</label>
+              <div class="formrow" style="grid-template-columns:1fr auto;align-items:center">
+                <input class="field" id="searchInput" maxlength="30" placeholder="e.g. kai" style="margin:4px 0">
+                <button class="btn" type="submit">Search</button>
+              </div>
+            </form>
+            <div id="searchResults"></div>
+            <div class="hint">You only ever need a username – no phone number, email address or location.</div>
+          </div>
+          <div class="card"><h2>🔒 Privacy &amp; safety</h2><div id="privacyBox"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section class="view" id="view-profile"></section>
+  </main>
+
+  <footer>LIFEQUEST 🌱 Progress is saved on this device. Now go outside!</footer>
+</div>
+
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-label="Dialog"><div class="modalcard" id="modalBody" tabindex="-1"></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
-const pool=[
-["Take a 15-minute walk somewhere you haven't been recently.","Side quest",25,"🚶"],["Read a chapter of a book somewhere comfortable.","Daily",20,"📚"],["Learn to make a new snack or simple meal.","Side quest",35,"🥪"],["Tidy one small area you've been avoiding.","Daily",20,"🧹"],["Draw or write something for ten minutes.","Stupid quest",25,"✏️"],["Visit a local library, park or public garden.","Legendary",50,"🗺️"],["Ask someone about a hobby they enjoy.","Side quest",30,"💬"],["Try a new skill for twenty minutes.","Legendary",50,"⚡"],["Identify three birds or plants on a walk.","Side quest",30,"🌿"],["Help someone with a task without being asked.","Legendary",45,"🤝"],["Find five interesting patterns on your next walk.","Stupid quest",25,"🔎"],["Practise a sport or active hobby for 20 minutes.","Daily",30,"🏸"],["Write down three things you want to try this month.","Side quest",20,"📝"],["Build, repair or create something with your hands.","Legendary",50,"🛠️"],
-["Plan a proper night out with friends: choose a public event, agree on transport and check-in times.","Legendary",100,"🌃"],
-["Find a public open-mic or busker performance. Ask politely if you can sing one song together.","Legendary",120,"🎤"],
-["Meet someone new through a club, team, class or community event and learn one thing about their interests.","Legendary",100,"🤝"],
-["Organise a themed picnic with three friends. Everyone brings one snack or activity.","Legendary",100,"🧺"],
-["Run a photo scavenger hunt with friends: capture ten colours, shapes or funny-but-kind details.","Side quest",65,"📸"],
-["Invite a friend to try an activity neither of you has done before, like a beginner class or social sport.","Legendary",110,"🧗"],
-["Host a mini games tournament with at least four rounds and a ridiculous handmade trophy.","Legendary",90,"🏆"],
-["Go to a local community event and start a friendly conversation with someone there, without asking for personal details.","Side quest",75,"🎪"],
-["Create a three-stop afternoon adventure with friends: a park, a snack stop and a place none of you know.","Legendary",120,"🗺️"],
-["Do a kindness relay: each friend chooses one helpful, low-key action for someone else.","Side quest",70,"💚"],
-["Sing karaoke with friends or perform a song at an organised open-mic if you feel comfortable.","Legendary",100,"🎶"],
-["Ask a friend to teach you a skill, then teach them something you know.","Side quest",60,"🔁"],
-["Plan a board-game or outdoor-games night and invite someone who hasn't joined your group before.","Legendary",90,"🎲"]];
-const discoveries=["Find a public place in your area you've never visited.","Walk a familiar route in the opposite direction.","Visit a local library or community space.","Find a quiet outdoor spot and notice five things around you.","Look for a local landmark and learn one fact about it."];
-let s=JSON.parse(localStorage.getItem("lq-save")||"null")||{xp:0,quests:[],done:[],places:[],items:[],plans:[],chat:[],activeQuestId:null};
-s.plans=s.plans||[];s.chat=s.chat||[];s.activeQuestId=s.activeQuestId||null;
-const esc=x=>String(x).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-function lvl(){return Math.floor(s.xp/100)+1}function rank(){let n=lvl();return n<3?"NPC":n<5?"Rookie":n<8?"Adventurer":n<12?"Hero":n<18?"Legend":"Final Boss"}
-function save(){localStorage.setItem("lq-save",JSON.stringify(s));render()}
-function msg(t){let e=document.getElementById("toast");e.textContent=t;e.style.display="block";clearTimeout(window.tm);window.tm=setTimeout(()=>e.style.display="none",2100)}
-function add(t,k,x,i="✦"){s.quests.unshift({id:Date.now()+Math.random(),t,k,x,i});save();msg("Quest added")}
-function generate(){let q=pool[Math.floor(Math.random()*pool.length)];add(...q)}
-function surprise(){let q=pool.filter(x=>x[1]==="Stupid quest"||x[1]==="Legendary");add(...q[Math.floor(Math.random()*q.length)])}
-function customQuest(){let t=document.getElementById("custom").value.trim(),k=document.getElementById("kind").value;if(!t)return msg("Give your quest a name");add(t,k,k==="Legendary"?50:k==="Daily"?20:30);document.getElementById("custom").value=""}
-function startQuest(id){let q=s.quests.find(q=>q.id===id);if(!q)return;s.activeQuestId=id;save();showQuestLock()}
-function showQuestLock(){let q=s.quests.find(q=>q.id===s.activeQuestId);if(!q){s.activeQuestId=null;save();return}document.getElementById("lockQuestTitle").textContent=q.t;document.getElementById("questLock").classList.add("show")}
-function exitQuestMode(){document.getElementById("questLock").classList.remove("show");s.activeQuestId=null;save();msg("Quest paused — you can restart it when ready")}
-function finishActive(){let id=s.activeQuestId;if(id==null)return;document.getElementById("questLock").classList.remove("show");s.activeQuestId=null;finish(id)}
-function createPlan(){let title=document.getElementById("planTitle").value.trim(),when=document.getElementById("planWhen").value.trim(),where=document.getElementById("planWhere").value.trim(),who=document.getElementById("planWho").value.trim();if(!title||!when||!where)return msg("Add a plan name, time and public meeting place");s.plans.unshift({title,when,where,who});["planTitle","planWhen","planWhere","planWho"].forEach(id=>document.getElementById(id).value="");save();msg("Plan saved")}
-function sendChat(){let input=document.getElementById("chatInput"),v=input.value.trim();if(!v)return;s.chat.push({v,at:new Date().toLocaleString()});input.value="";save()}
-function finish(id){let q=s.quests.find(q=>q.id===id);if(!q)return;s.quests=s.quests.filter(q=>q.id!==id);s.done.unshift(q);s.xp+=q.x;s.items.push(q.i);save();msg("Quest complete! +"+q.x+" XP")}
-function page(id){document.querySelectorAll(".page").forEach(e=>e.classList.toggle("active",e.id===id));document.querySelectorAll(".nav button").forEach(e=>e.classList.toggle("active",e.dataset.page===id));scrollTo(0,0)}
-document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>page(b.dataset.page));
-function quest(q){return `<div class="quest"><span class="ico">${q.i}</span><div class="qbody"><b>${esc(q.t)}</b><small><span class="chip ${q.k==="Legendary"?"legend":""}">${esc(q.k)}</span> · ${q.x} XP</small></div><button class="done" onclick="startQuest(${q.id})">Start</button></div>`}
-function render(){let l=lvl(),r=rank(),p=s.xp%100;["level"].forEach(id=>document.getElementById(id).textContent=l);document.getElementById("rank").textContent=r;document.getElementById("xp").textContent=s.xp;document.getElementById("count").textContent=s.done.length;document.getElementById("rankPill").textContent=`LVL ${l} · ${r.toUpperCase()}`;document.getElementById("progressText").textContent=`${p} / 100 XP`;document.getElementById("progress").style.width=p+"%";document.getElementById("profileProgress").style.width=p+"%";document.getElementById("profileRank").textContent=`${r} · Level ${l}`;document.getElementById("profileStats").textContent=`${s.xp} total XP · ${s.done.length} quests completed`;document.getElementById("friendXP").textContent=s.xp+" XP";
-document.getElementById("plans").innerHTML=s.plans.length?s.plans.map((p,i)=>`<div class="plan"><b>${esc(p.title)}</b><p class="muted">${esc(p.when)} · ${esc(p.where)}</p><small>Invited: ${esc(p.who||"Not specified")}</small></div>`).join(""):'<div class="empty">No plans yet. Make the first one.</div>';
-document.getElementById("chatlog").innerHTML=s.chat.length?s.chat.map(m=>`<div class="bubble mine">${esc(m.v)}<small>You · ${esc(m.at)}</small></div>`).join(""):'<div class="empty">Start the conversation by suggesting an adventure.</div>';
-document.getElementById("homeQuests").innerHTML=s.quests.length?s.quests.slice(0,4).map(quest).join(""):'<div class="empty">No quests yet. Generate one to start.</div>';
-document.getElementById("allQuests").innerHTML=s.quests.length?s.quests.map(q=>`<div class="qcard"><span class="chip ${q.k==="Legendary"?"legend":""}">${esc(q.k)}</span><h3>${q.i} ${esc(q.t)}</h3><p>Complete this in real life, then claim your XP.</p><div class="foot"><span class="xp">+${q.x} XP</span><button class="done" onclick="startQuest(${q.id})">Start</button></div></div>`).join(""):'<div class="empty">Quest board clear. Generate a quest.</div>';
-document.getElementById("completed").innerHTML=s.done.length?s.done.slice(0,8).map(q=>`<div class="quest"><span>${q.i}</span><b>${esc(q.t)}</b><span class="xp">✓ +${q.x} XP</span></div>`).join(""):'<div class="empty">Completed quests appear here.</div>';
-document.getElementById("exploreList").innerHTML=discoveries.map(t=>`<div class="quest"><span class="ico">⌖</span><div class="qbody"><b>${t}</b><small>Explore quest · 30 XP</small></div><button class="done" onclick="add('${t.replace(/'/g,"\\'")}','Side quest',30,'⌖')">Save</button></div>`).join("");
-document.getElementById("places").innerHTML=s.places.map(p=>"• "+esc(p)).join("<br>");document.getElementById("items").textContent=s.items.length?s.items.join(" "):"Your inventory is empty. Complete quests to collect tokens.";
-let a=[["First steps","Complete your first quest",s.done.length>=1,"🏅"],["Getting started","Earn 100 XP",s.xp>=100,"⭐"],["Quest collector","Complete 5 quests",s.done.length>=5,"🎖️"],["Big adventurer","Reach level 5",l>=5,"👑"]];document.getElementById("achievements").innerHTML=a.map(x=>`<div class="quest"><span class="ico">${x[3]}</span><div class="qbody"><b>${x[0]}</b><small>${x[1]}</small></div><span class="xp">${x[2]?"UNLOCKED":"LOCKED"}</span></div>`).join("")}
-function addPlace(){let v=document.getElementById("placeInput").value.trim();if(!v)return;s.places.push(v);document.getElementById("placeInput").value="";save();msg("Discovery saved")}
-render();if(s.activeQuestId!==null)showQuestLock();
-</script></body></html>
+/* ==========================================================
+   LIFEQUEST – application code
+   Sections: 1 Data  2 State  3 Helpers  4 Social service
+             5 Quest logic  6 Rendering  7 Events  8 Init
+   ========================================================== */
+(function () {
+'use strict';
+
+/* ---------- 1. GAME DATA ---------- */
+var STORE_KEY = 'lifequest-v2';
+var OLD_STORE_KEY = 'lq-save'; // earlier prototype, migrated automatically
+
+var CATS = ['Exploration', 'Social', 'Personal Development', 'Fitness & Outdoors'];
+var CAT_META = {
+  'Exploration':          { icon: '🧭', cls: 'c-exp', token: { icon: '🗺️', name: 'Map Scrap' } },
+  'Social':               { icon: '🫶', cls: 'c-soc', token: { icon: '💌', name: 'Friendship Letter' } },
+  'Personal Development': { icon: '🌱', cls: 'c-per', token: { icon: '📖', name: 'Bookmark' } },
+  'Fitness & Outdoors':   { icon: '🥾', cls: 'c-fit', token: { icon: '🍃', name: 'Lucky Leaf' } }
+};
+var GROUP_TOKEN = { icon: '🎈', name: 'Party Balloon' };
+var DIFF_XP = { Easy: 20, Medium: 45, Hard: 90 }; // used for custom quests
+var MAX_PARTY = 4; // including you
+
+// Quest library: [name, description, category, difficulty, xp, icon]
+var LIB = [
+  ['Park Wanderer', "Visit a local park you haven't properly explored and find one thing you've never noticed.", 'Exploration', 'Easy', 25, '🌳'],
+  ['Landmark Hunter', 'Find an interesting landmark nearby and learn one fact about it.', 'Exploration', 'Medium', 45, '🏛️'],
+  ['Three-Stop Adventure', 'Plan an outing with three stops: a green space, a snack stop and somewhere completely new.', 'Exploration', 'Hard', 90, '🗺️'],
+  ['Opposite Route', 'Walk a familiar route in the opposite direction and notice what looks different.', 'Exploration', 'Easy', 20, '🔄'],
+  ['Photo Scavenger Hunt', 'Photograph ten things: a colour, a shape, a texture, a tiny detail, something old, something new…', 'Exploration', 'Medium', 50, '📸'],
+  ['Library Detour', 'Visit a local library or community space and browse a shelf you never normally look at.', 'Exploration', 'Easy', 25, '📚'],
+  ['Hidden Corner', 'Find a quiet public spot – a bench, garden or lookout – and spend ten minutes there without your phone.', 'Exploration', 'Easy', 30, '🪑'],
+  ['Market Stroll', "Visit a local market or shopping street and try something you haven't tasted before.", 'Exploration', 'Medium', 50, '🧺'],
+
+  ['Board Game Break', 'Play a board or card game with someone, in person.', 'Social', 'Easy', 30, '🎲'],
+  ['Themed Picnic', 'Organise a small picnic with a theme. Everyone brings one thing to share.', 'Social', 'Hard', 90, '🥪'],
+  ['Community Event', 'Attend a community event, class or market and say hello to one new person.', 'Social', 'Medium', 55, '🎪'],
+  ['Kind Words', 'Give someone a genuine compliment or write them a thank-you note.', 'Social', 'Easy', 20, '💌'],
+  ['Try Something Together', "Invite a friend to try a beginner activity that neither of you has done before.", 'Social', 'Hard', 100, '🎨'],
+  ['Skill Swap', 'Ask a friend to teach you something small, then teach them something you know.', 'Social', 'Medium', 50, '🔁'],
+  ['Phone-Free Meal', 'Share a meal with someone and keep both phones away for the whole time.', 'Social', 'Easy', 30, '🍽️'],
+  ['Kindness Relay', 'Choose one helpful, low-key thing to do for someone else today.', 'Social', 'Medium', 45, '💚'],
+
+  ['Chapter a Day', 'Read a chapter of a book somewhere comfortable.', 'Personal Development', 'Easy', 20, '📖'],
+  ['New Recipe', "Cook something you've never made before.", 'Personal Development', 'Medium', 45, '🍲'],
+  ['Ten-Minute Sketch', 'Draw, write or craft something for ten minutes.', 'Personal Development', 'Easy', 25, '✏️'],
+  ['Skill Sampler', 'Spend 20 minutes learning a brand-new skill from scratch.', 'Personal Development', 'Medium', 50, '💡'],
+  ['Tidy Corner', "Tidy one small area that's been bothering you.", 'Personal Development', 'Easy', 20, '🧹'],
+  ['Make Something', 'Build, repair or finish a small creative project with your hands.', 'Personal Development', 'Hard', 85, '🛠️'],
+  ['Plant Care', 'Water, repot or start a plant.', 'Personal Development', 'Easy', 25, '🪴'],
+  ['Month Wishlist', 'Write down three new things you want to try this month.', 'Personal Development', 'Easy', 20, '📝'],
+
+  ['Neighbourhood Stroll', 'Take a 20-minute walk with your phone in your pocket.', 'Fitness & Outdoors', 'Easy', 25, '🚶'],
+  ['Nature Notes', 'Identify three birds, trees or flowers on a walk.', 'Fitness & Outdoors', 'Medium', 40, '🐦'],
+  ['Two-Wheel Day', 'Ride a bike for 30 minutes along a safe route.', 'Fitness & Outdoors', 'Medium', 55, '🚲'],
+  ['New Sport', "Try a sport or active class you haven't played before.", 'Fitness & Outdoors', 'Hard', 95, '🏸'],
+  ['Sunshine Break', 'Spend 30 minutes outdoors in daylight.', 'Fitness & Outdoors', 'Easy', 25, '☀️'],
+  ['Nature Trail', 'Complete a longer nature walk (an hour or more) on a marked path.', 'Fitness & Outdoors', 'Hard', 85, '🥾'],
+  ['Stretch & Breathe', 'Spend ten minutes stretching outside.', 'Fitness & Outdoors', 'Easy', 20, '🧘'],
+  ['Sunset Spot', 'Find a good place to watch the sunset and go there.', 'Fitness & Outdoors', 'Easy', 25, '🌇']
+];
+
+// Group quest templates: [name, description, category, difficulty, xp, icon]
+var GROUP_LIB = [
+  ['Explore Together', 'Pick somewhere none of you have been and explore it as a team.', 'Exploration', 'Medium', 80, '🧭'],
+  ['Picnic Party', 'Organise a picnic where everyone brings one snack or game.', 'Social', 'Hard', 120, '🧺'],
+  ['Friendly Match', 'Play a casual sport together – no pressure, lots of laughs.', 'Fitness & Outdoors', 'Medium', 90, '⚽'],
+  ['Group Photo Hunt', 'Photograph ten colours, shapes or details together.', 'Exploration', 'Medium', 90, '📸'],
+  ['Try It Together', 'Try a beginner activity or class that is new to everyone.', 'Social', 'Hard', 130, '🎨'],
+  ['Games Tournament', 'Host a mini games tournament with four rounds and a silly handmade trophy.', 'Social', 'Medium', 100, '🏆'],
+  ['Walk & Talk', 'Take a relaxed walk together and swap one new idea each.', 'Fitness & Outdoors', 'Easy', 60, '🚶'],
+  ['Cook-Along', 'Cook a meal together and try one ingredient none of you have used.', 'Personal Development', 'Medium', 90, '🍳']
+];
+
+var EXPLORE_IDEAS = [
+  { id: 'e1', icon: '🌳', title: 'Find a new green space', desc: "Look for a park, garden or reserve you haven't visited and spend 20 minutes there.", tag: 'Nearby idea', cat: 'Exploration', diff: 'Easy', xp: 25 },
+  { id: 'e2', icon: '🏛️', title: 'Landmark fact-finder', desc: 'Visit a local landmark, then learn one surprising fact about it.', tag: 'Adventure', cat: 'Exploration', diff: 'Medium', xp: 45 },
+  { id: 'e3', icon: '🌅', title: 'Golden hour wander', desc: 'Head out in the last hour before sunset and walk somewhere with a view.', tag: 'Nearby idea', cat: 'Fitness & Outdoors', diff: 'Easy', xp: 25 },
+  { id: 'e4', icon: '🥐', title: 'Local flavour trail', desc: "Try a treat from a small local bakery, café or market stall you haven't been to.", tag: 'Adventure', cat: 'Exploration', diff: 'Medium', xp: 45 },
+  { id: 'e5', icon: '🎨', title: 'Street art safari', desc: 'Look for murals, sculptures or interesting signs and photograph your three favourites.', tag: 'Challenge', cat: 'Exploration', diff: 'Medium', xp: 50 },
+  { id: 'e6', icon: '🚌', title: 'Mystery stop', desc: "Choose a bus or train stop in a safe, busy area you've never visited. Explore for an hour, then head home.", tag: 'Challenge', cat: 'Exploration', diff: 'Hard', xp: 85 },
+  { id: 'e7', icon: '🌊', title: 'Water-edge walk', desc: 'Find a creek, beach, pond or fountain and walk its edge, noticing what lives there.', tag: 'Nearby idea', cat: 'Fitness & Outdoors', diff: 'Easy', xp: 30 },
+  { id: 'e8', icon: '📚', title: 'Little library hop', desc: 'Visit a community library, book swap shelf or bookshop and pick something unexpected.', tag: 'Nearby idea', cat: 'Personal Development', diff: 'Easy', xp: 25 },
+  { id: 'e9', icon: '📌', title: 'Community noticeboard', desc: 'Find a community noticeboard and note down one event or class you could try.', tag: 'Challenge', cat: 'Social', diff: 'Easy', xp: 30 },
+  { id: 'e10', icon: '🔭', title: 'Stargazing night', desc: 'On a clear night, find a darker public spot (or your own yard) and try to spot three stars, planets or constellations.', tag: 'Adventure', cat: 'Exploration', diff: 'Medium', xp: 50 }
+];
+var EXPLORE_TAGS = ['All', 'Nearby idea', 'Adventure', 'Challenge'];
+
+var HUNTS = [
+  { id: 'h1', icon: '🌈', title: 'Rainbow Hunt', xp: 60, items: ['Something red', 'Something orange', 'Something yellow', 'Something green', 'Something blue', 'Something purple'] },
+  { id: 'h2', icon: '🔍', title: 'Tiny Nature Detectives', xp: 50, items: ['A leaf with an interesting shape', 'A flower', 'Something that buzzes or flutters', 'A bug home or animal track', 'A cloud you can name', 'A very small plant'] },
+  { id: 'h3', icon: '🏘️', title: 'Town Trinkets', xp: 60, items: ['A funny sign', 'A very old building', 'A door in an unusual colour', 'A mural or public art', 'A street name with a story', 'A cosy-looking café'] }
+];
+
+var ACHIEVEMENTS = [
+  { id: 'first', icon: '👣', title: 'First Steps', desc: 'Complete your first quest.', test: function (s) { return s.completed.length >= 1; } },
+  { id: 'explorer', icon: '🧭', title: 'Explorer', desc: 'Complete 3 Exploration quests.', test: function (s) { return countCat(s, 'Exploration') >= 3; } },
+  { id: 'butterfly', icon: '🦋', title: 'Social Butterfly', desc: 'Complete 3 Social quests.', test: function (s) { return countCat(s, 'Social') >= 3; } },
+  { id: 'adventurer', icon: '⛰️', title: 'Adventurer', desc: 'Complete a Hard quest.', test: function (s) { return s.completed.some(function (q) { return q.difficulty === 'Hard'; }); } },
+  { id: 'consistent', icon: '🌼', title: 'Consistent', desc: 'Complete quests on 3 different days.', test: function (s) { return uniqueDays(s) >= 3; } },
+  { id: 'trail', icon: '🥾', title: 'Trail Friend', desc: 'Complete 3 Fitness & Outdoors quests.', test: function (s) { return countCat(s, 'Fitness & Outdoors') >= 3; } },
+  { id: 'curious', icon: '💡', title: 'Curious Mind', desc: 'Complete 3 Personal Development quests.', test: function (s) { return countCat(s, 'Personal Development') >= 3; } },
+  { id: 'maker', icon: '✏️', title: 'Quest Maker', desc: 'Create your own custom quest.', test: function (s) { return s.customCount >= 1; } },
+  { id: 'party', icon: '🎈', title: 'Party Up', desc: 'Complete a group quest with your party.', test: function (s) { return s.completed.some(function (q) { return q.group; }); } },
+  { id: 'level5', icon: '⭐', title: 'Rising Star', desc: 'Reach level 5.', test: function (s) { return levelInfo(s.xp).lvl >= 5; } },
+  { id: 'xp500', icon: '🍯', title: 'Treasure Trove', desc: 'Earn 500 XP in total.', test: function (s) { return s.xp >= 500; } }
+];
+
+var AVATARS = ['🦊', '🐱', '🐻', '🐸', '🐰', '🦉', '🐧', '🦔', '🐢', '🦦', '🐼', '🦋'];
+
+// Demo characters. A real backend would return these from a users table.
+var DEMO_USERS = {
+  alex:   { name: 'alex_adventures', avatar: '🦊', level: 6, online: true,  bio: 'Loves picnics and trail maps.' },
+  sam:    { name: 'sam_in_the_sun',  avatar: '🐻', level: 3, online: false, bio: 'Board game enthusiast.' },
+  jordan: { name: 'jordan_j',        avatar: '🐸', level: 8, online: true,  bio: 'Always up for a bike ride.' },
+  riley:  { name: 'riley_reads',     avatar: '🦉', level: 4, online: true,  bio: 'Bookworm exploring new cafés.' },
+  wren:   { name: 'wren_wanders',    avatar: '🐦', level: 5, online: true,  bio: 'Looking for a hiking buddy.' },
+  morgan: { name: 'morgan_makes',    avatar: '🦔', level: 2, online: false, bio: 'Crafts, plants and tea.' },
+  kai:    { name: 'kai_kicks',       avatar: '🐢', level: 7, online: true,  bio: 'Will play any sport once.' },
+  mina:   { name: 'mina_moss',       avatar: '🐰', level: 3, online: true,  bio: 'Photographs tiny nature details.' }
+};
+
+var WELCOME_LINES = [
+  'The kettle is on and the garden is waiting. What will you discover today?',
+  'Small adventures add up. Pick one quest and enjoy the fresh air.',
+  'Your little world grows every time you try something new.',
+  'Put the phone down, step outside, and let the day surprise you.',
+  'Every great story starts with one tiny step out the door.'
+];
+
+/* ---------- 2. STATE ---------- */
+function defaultState() {
+  return {
+    v: 2,
+    profile: { name: 'Wanderer', avatar: '🦊' },
+    xp: 0,
+    available: [], completed: [], removed: [], tokens: [],
+    unlocked: {}, places: [], hunts: {}, plans: [], chat: [],
+    active: null, lastTopUp: '', customCount: 0, groupQuests: [],
+    social: {
+      friends: ['alex', 'sam', 'jordan', 'riley'],
+      requests: ['wren'],
+      sent: [],
+      blocked: [],
+      reports: [],
+      party: { members: [], pending: [], groupQuest: null },
+      privacy: { online: true, requests: true, showLevel: true }
+    }
+  };
+}
+
+var S = loadState();
+var ui = { tab: 'home', qfilter: 'All', exfilter: 'All', searchQ: '', searchResults: [], proposal: null, surprise: null };
+var modalKind = '';
+var confirmCb = null;
+var lastFocus = null;
+var toastTimer = null;
+
+function loadState() {
+  var st = defaultState();
+  var raw = null;
+  try { raw = JSON.parse(localStorage.getItem(STORE_KEY)); } catch (e) { raw = null; }
+  if (raw && raw.v === 2) {
+    Object.keys(raw).forEach(function (k) { st[k] = raw[k]; });
+    var d = defaultState().social;
+    st.social = Object.assign(d, raw.social || {});
+    st.social.party = Object.assign({ members: [], pending: [], groupQuest: null }, (raw.social && raw.social.party) || {});
+    st.social.privacy = Object.assign({ online: true, requests: true, showLevel: true }, (raw.social && raw.social.privacy) || {});
+    st.profile = Object.assign({ name: 'Wanderer', avatar: '🦊' }, raw.profile || {});
+    ['available', 'completed', 'removed', 'tokens', 'places', 'plans', 'chat', 'groupQuests'].forEach(function (k) { if (!Array.isArray(st[k])) st[k] = []; });
+    if (!st.unlocked || typeof st.unlocked !== 'object') st.unlocked = {};
+    if (!st.hunts || typeof st.hunts !== 'object') st.hunts = {};
+    return st;
+  }
+  // First run (or upgrade from the earlier prototype): migrate old progress if present.
+  try {
+    var old = JSON.parse(localStorage.getItem(OLD_STORE_KEY) || 'null');
+    if (old) migrateOldSave(st, old);
+  } catch (e) { /* ignore corrupt old save */ }
+  return st;
+}
+
+function migrateOldSave(st, old) {
+  function conv(q) {
+    var x = Number(q.x) || 25;
+    return { id: uid(), name: String(q.t || 'Old quest'), desc: 'A quest carried over from your earlier adventures.',
+      cat: 'Personal Development', difficulty: x >= 80 ? 'Hard' : x >= 40 ? 'Medium' : 'Easy', xp: x, icon: q.i || '✨' };
+  }
+  st.xp = Number(old.xp) || 0;
+  st.available = (old.quests || []).map(conv);
+  st.completed = (old.done || []).map(function (q) { var c = conv(q); c.completedAt = new Date().toISOString(); c.date = dayStr(); return c; });
+  st.places = (old.places || []).map(String);
+  st.tokens = (old.items || []).map(function (i) { return { icon: String(i), name: 'Keepsake' }; });
+  st.plans = (old.plans || []).map(function (p) {
+    return { id: uid(), title: String(p.title || 'Plan'), when: String(p.when || ''), where: String(p.where || ''),
+      who: String(p.who || '').split(',').map(function (w) { return w.trim(); }).filter(Boolean) };
+  });
+  st.chat = (old.chat || []).map(function (m) { return { text: String(m.v || ''), at: String(m.at || ''), from: 'me' }; });
+}
+
+function save() {
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(S)); }
+  catch (e) { toast("Couldn't save – your browser may be blocking storage."); }
+}
+
+/* ---------- 3. HELPERS ---------- */
+function $(id) { return document.getElementById(id); }
+function h(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+function uid() { return 'q' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+function pad(n) { return (n < 10 ? '0' : '') + n; }
+function dayStr(d) { d = d || new Date(); return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function countCat(s, cat) { return s.completed.filter(function (q) { return q.cat === cat; }).length; }
+function uniqueDays(s) { var d = {}; s.completed.forEach(function (q) { d[q.date] = 1; }); return Object.keys(d).length; }
+function fromLib(l) { return { id: uid(), name: l[0], desc: l[1], cat: l[2], difficulty: l[3], xp: l[4], icon: l[5] }; }
+function findAvail(id) { return S.available.find(function (q) { return q.id === id; }); }
+function userOf(id) { return DEMO_USERS[id] || { name: String(id), avatar: '🙂', level: 1, online: false, bio: '' }; }
+
+function levelInfo(xp) {
+  var lvl = 1, need = 100, rem = xp;
+  while (rem >= need) { rem -= need; lvl++; need = 100 + (lvl - 1) * 25; }
+  return { lvl: lvl, into: rem, need: need, pct: Math.round(rem / need * 100) };
+}
+function rankFor(lvl) {
+  return lvl < 3 ? 'Newcomer' : lvl < 5 ? 'Wanderer' : lvl < 7 ? 'Explorer' : lvl < 10 ? 'Trailblazer' : lvl < 15 ? 'Adventurer' : 'Legend';
+}
+function streak() {
+  var days = {}; S.completed.forEach(function (q) { days[q.date] = 1; });
+  var d = new Date(); if (!days[dayStr(d)]) d.setDate(d.getDate() - 1);
+  var n = 0; while (days[dayStr(d)]) { n++; d.setDate(d.getDate() - 1); }
+  return n;
+}
+function tokenFor(q) { return q.group ? GROUP_TOKEN : (CAT_META[q.cat] || CAT_META['Exploration']).token; }
+
+function toast(msg) {
+  var t = $('toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.classList.remove('show'); }, 2800);
+}
+
+/* Modal helpers */
+function openModal(html, kind) {
+  lastFocus = document.activeElement;
+  modalKind = kind || '';
+  $('modalBody').innerHTML = html;
+  $('modal').hidden = false;
+  $('modalBody').scrollTop = 0;
+  $('modalBody').focus();
+}
+function closeModal() {
+  $('modal').hidden = true; $('modalBody').innerHTML = ''; modalKind = '';
+  document.querySelectorAll('.petal').forEach(function (p) { p.remove(); });
+  if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) {} }
+}
+function dismissModal() {
+  if ($('modal').hidden) return;
+  if (modalKind === 'quest') { pauseQuest(); return; }
+  closeModal();
+}
+function confirmBox(o) {
+  confirmCb = o.onOk;
+  openModal('<h2>' + h(o.title) + '</h2><p class="muted">' + h(o.text) + '</p><div class="btns" style="margin-top:16px">' +
+    '<button class="btn ' + (o.danger ? 'danger' : '') + '" data-act="confirmOk">' + h(o.ok || 'Yes') + '</button>' +
+    '<button class="btn ghost" data-act="closeModal">Cancel</button></div>', 'confirm');
+}
+
+/* ---------- 4. SOCIAL SERVICE ----------
+   Everything the Friends tab needs goes through this object. Today it works on
+   local demo data and simulates replies. To go online later, replace the bodies
+   with Firebase / Supabase calls (they will be asynchronous – return Promises
+   and call render() when they resolve). The UI itself will not need to change. */
+var Social = {
+  search: function (q) {
+    q = q.toLowerCase();
+    return Object.keys(DEMO_USERS).filter(function (id) {
+      return DEMO_USERS[id].name.toLowerCase().indexOf(q) !== -1 &&
+        S.social.friends.indexOf(id) === -1 && S.social.blocked.indexOf(id) === -1;
+    });
+  },
+  sendRequest: function (id) {
+    var so = S.social;
+    if (so.friends.indexOf(id) !== -1 || so.sent.indexOf(id) !== -1) return;
+    so.sent.push(id); save(); render();
+    setTimeout(function () { Social.resolveRequest(id); }, 2000); // simulated reply
+  },
+  resolveRequest: function (id) {
+    var i = S.social.sent.indexOf(id);
+    if (i === -1) return;
+    S.social.sent.splice(i, 1);
+    if (S.social.blocked.indexOf(id) === -1) {
+      S.social.friends.push(id);
+      toast(userOf(id).name + ' accepted your request (simulated)');
+    }
+    save(); render();
+  },
+  acceptRequest: function (id) {
+    S.social.requests = S.social.requests.filter(function (r) { return r !== id; });
+    if (S.social.friends.indexOf(id) === -1) S.social.friends.push(id);
+    save(); render(); toast('You and ' + userOf(id).name + ' are now friends!');
+  },
+  declineRequest: function (id) {
+    S.social.requests = S.social.requests.filter(function (r) { return r !== id; });
+    save(); render(); toast('Request declined.');
+  },
+  removeFriend: function (id) {
+    var so = S.social;
+    so.friends = so.friends.filter(function (f) { return f !== id; });
+    Social.dropFromParty(id);
+    save(); render();
+  },
+  block: function (id) {
+    var so = S.social;
+    if (so.blocked.indexOf(id) === -1) so.blocked.push(id);
+    so.friends = so.friends.filter(function (f) { return f !== id; });
+    so.requests = so.requests.filter(function (f) { return f !== id; });
+    so.sent = so.sent.filter(function (f) { return f !== id; });
+    Social.dropFromParty(id);
+    save(); render();
+  },
+  unblock: function (id) {
+    S.social.blocked = S.social.blocked.filter(function (b) { return b !== id; });
+    save(); render();
+  },
+  report: function (id, reason, note) {
+    S.social.reports.push({ user: id, reason: reason, note: note, at: new Date().toISOString() });
+    save();
+  },
+  dropFromParty: function (id) {
+    var p = S.social.party;
+    p.members = p.members.filter(function (m) { return m !== id; });
+    p.pending = p.pending.filter(function (m) { return m !== id; });
+    if (p.groupQuest) delete p.groupQuest.status[id];
+  },
+  invite: function (id) {
+    var p = S.social.party, u = userOf(id);
+    if (p.members.indexOf(id) !== -1 || p.pending.indexOf(id) !== -1) return;
+    if (!u.online) { toast(u.name + ' is offline. In this demo only online friends can be invited.'); return; }
+    if (p.members.length + p.pending.length + 1 >= MAX_PARTY) { toast('Your party is full (max ' + MAX_PARTY + ' adventurers).'); return; }
+    if (p.groupQuest) { toast('Finish or cancel the current group quest before inviting someone new.'); return; }
+    p.pending.push(id); save(); render();
+    setTimeout(function () { Social.resolveInvite(id); }, 1400); // simulated reply
+  },
+  resolveInvite: function (id) {
+    var p = S.social.party, i = p.pending.indexOf(id);
+    if (i === -1) return;
+    p.pending.splice(i, 1);
+    if (S.social.friends.indexOf(id) !== -1 && p.members.length + 1 < MAX_PARTY) {
+      p.members.push(id);
+      toast(userOf(id).name + ' joined your party (simulated)');
+    }
+    save(); render();
+  },
+  leaveParty: function () {
+    S.social.party = { members: [], pending: [], groupQuest: null };
+    save(); render();
+  },
+  startGroupQuest: function (gid) {
+    var p = S.social.party;
+    var g = S.groupQuests.find(function (x) { return x.id === gid; });
+    if (!g || p.members.length < 1) return false;
+    var status = { me: false };
+    p.members.forEach(function (m) { status[m] = false; });
+    p.groupQuest = { quest: g, status: status, startedAt: new Date().toISOString() };
+    save(); render(); return true;
+  },
+  markDone: function (who) {
+    var gq = S.social.party.groupQuest;
+    if (!gq || !(who in gq.status)) return;
+    gq.status[who] = true; save();
+    var all = Object.keys(gq.status).every(function (k) { return gq.status[k]; });
+    if (all) finishGroupQuest(); else render();
+  },
+  cancelGroupQuest: function () {
+    S.social.party.groupQuest = null; save(); render();
+  }
+};
+
+/* ---------- 5. QUEST LOGIC ---------- */
+function topUpQuests(min) {
+  min = min || 6;
+  if (S.lastTopUp === dayStr()) return;
+  S.lastTopUp = dayStr();
+  var have = {};
+  S.available.forEach(function (q) { have[q.name] = 1; });
+  S.removed.forEach(function (q) { have[q.name] = 1; });
+  var pool = shuffle(LIB.filter(function (l) { return !have[l[0]]; }));
+  var ci = 0;
+  while (S.available.length < min && pool.length) {
+    var cat = CATS[ci++ % CATS.length];
+    var i = pool.findIndex(function (l) { return l[2] === cat; });
+    if (i < 0) i = 0;
+    S.available.push(fromLib(pool.splice(i, 1)[0]));
+  }
+}
+function seedGroupQuests() {
+  if (S.groupQuests.length) return;
+  S.groupQuests = GROUP_LIB.map(function (l) { var q = fromLib(l); q.group = true; return q; });
+}
+
+function checkAchievements() {
+  var fresh = [];
+  ACHIEVEMENTS.forEach(function (a) {
+    if (!S.unlocked[a.id] && a.test(S)) { S.unlocked[a.id] = dayStr(); fresh.push(a); }
+  });
+  return fresh;
+}
+
+/* Award XP – the ONLY place XP is ever added, and only on genuine completion. */
+function awardCompletion(q, opts) {
+  opts = opts || {};
+  var beforeLvl = levelInfo(S.xp).lvl;
+  var gain = q.xp + (opts.bonus || 0);
+  var record = { id: uid(), name: q.name, desc: q.desc, cat: q.cat, difficulty: q.difficulty, icon: q.icon,
+    xp: gain, group: !!opts.group, partySize: opts.partySize || 0, completedAt: new Date().toISOString(), date: dayStr() };
+  S.xp += gain;
+  S.completed.unshift(record);
+  S.tokens.push(tokenFor(record));
+  var fresh = checkAchievements();
+  save(); render();
+  celebrate(record, beforeLvl, levelInfo(S.xp).lvl, fresh);
+}
+
+function startQuest(id) {
+  var q = findAvail(id);
+  if (!q) return;
+  q.started = true; // starting never awards XP
+  S.active = { kind: 'solo', id: id };
+  save(); render(); showQuestScreen(q);
+}
+function showQuestScreen(q) {
+  openModal(
+    '<div class="center"><div class="bigicon">' + h(q.icon) + '</div><h2>' + h(q.name) + '</h2>' +
+    '<div class="tags" style="justify-content:center"><span class="tag">' + h(q.cat) + '</span><span class="tag ' + h(q.difficulty) + '">' + h(q.difficulty) + '</span></div></div>' +
+    '<div class="steps"><b>Your mission</b><p style="margin:6px 0 0">' + h(q.desc) + '</p></div>' +
+    '<div class="center"><span class="xp">Reward: +' + q.xp + ' XP</span></div>' +
+    '<ul class="steps"><li>Put your phone away and enjoy the moment.</li><li>Stay safe and keep to public places.</li><li>Come back and press the button once you have really done it.</li></ul>' +
+    '<div class="btns" style="justify-content:center"><button class="btn" data-act="complete" data-id="' + h(q.id) + '">✅ I completed it!</button>' +
+    '<button class="btn ghost" data-act="pause">⏸ Pause / exit</button></div>', 'quest');
+}
+function pauseQuest() {
+  S.active = null; save(); closeModal(); render();
+  toast('Quest paused – it is waiting on your board.');
+}
+function completeQuest(id) {
+  var q = findAvail(id);
+  if (!q) { closeModal(); return; }
+  S.available = S.available.filter(function (x) { return x.id !== id; });
+  S.active = null;
+  closeModal();
+  awardCompletion(q);
+}
+function removeQuest(id) {
+  var q = findAvail(id);
+  if (!q) return;
+  confirmBox({
+    title: 'Remove this quest?',
+    text: '"' + q.name + '" will be taken off your board. You will not earn any XP and your level, quests and progress stay exactly as they are.',
+    ok: 'Remove quest', danger: true,
+    onOk: function () {
+      // Removing is NOT completing: no XP, no completed record, no token.
+      S.available = S.available.filter(function (x) { return x.id !== id; });
+      S.removed.unshift(q); S.removed = S.removed.slice(0, 30);
+      if (S.active && S.active.id === id) S.active = null;
+      save(); render(); toast('Quest removed. Your XP is unchanged.');
+    }
+  });
+}
+function restoreQuest(id) {
+  var q = S.removed.find(function (x) { return x.id === id; });
+  if (!q) return;
+  S.removed = S.removed.filter(function (x) { return x.id !== id; });
+  delete q.started;
+  S.available.unshift(q); save(); render(); toast('Quest restored to your board.');
+}
+function addQuest(q, msg) {
+  S.available.unshift(q); save(); render(); toast(msg || 'Quest added to your board!');
+}
+
+/* Random quest proposal: accept or reject */
+function proposeRandom() {
+  var pool = LIB.filter(function (l) { return !S.available.some(function (q) { return q.name === l[0]; }); });
+  if (!pool.length) pool = LIB;
+  ui.proposal = fromLib(pick(pool));
+  var q = ui.proposal;
+  openModal('<div class="center"><div class="bigicon">' + h(q.icon) + '</div><h2>A quest appears!</h2><h3>' + h(q.name) + '</h3>' +
+    '<div class="tags" style="justify-content:center;margin:8px 0"><span class="tag">' + h(q.cat) + '</span><span class="tag ' + h(q.difficulty) + '">' + h(q.difficulty) + '</span></div>' +
+    '<p class="muted">' + h(q.desc) + '</p><span class="xp">+' + q.xp + ' XP</span></div>' +
+    '<div class="btns" style="justify-content:center;margin-top:18px"><button class="btn" data-act="randomAccept">Accept</button>' +
+    '<button class="btn soft" data-act="random">🎲 Another</button><button class="btn ghost" data-act="closeModal">No thanks</button></div>', 'random');
+}
+
+/* Group quest completion */
+function finishGroupQuest() {
+  var p = S.social.party, gq = p.groupQuest;
+  if (!gq) return;
+  var friends = p.members.length;
+  var bonus = Math.round(gq.quest.xp * 0.1 * friends); // +10% per friend
+  p.groupQuest = null;
+  awardCompletion(gq.quest, { group: true, bonus: bonus, partySize: friends + 1 });
+}
+
+/* Celebration screen */
+function celebrate(rec, beforeLvl, afterLvl, fresh) {
+  var li = levelInfo(S.xp);
+  var html = '<div class="center"><div class="bigicon">' + h(rec.icon) + '</div><h2>' + (rec.group ? 'Group quest complete!' : 'Quest complete!') + '</h2>' +
+    '<p class="muted">' + h(rec.name) + '</p><div class="gain">+' + rec.xp + ' XP</div>';
+  if (afterLvl > beforeLvl) html += '<div class="levelup">🎉 Level up! You are now level ' + afterLvl + ' · ' + h(rankFor(afterLvl)) + '</div>';
+  html += '<div class="barlabel"><span>Level ' + li.lvl + '</span><span>' + li.into + ' / ' + li.need + ' XP</span></div><div class="bar"><i id="celebBar" style="width:0%"></i></div>';
+  fresh.forEach(function (a) { html += '<div class="levelup" style="background:var(--leaf)">' + a.icon + ' Achievement unlocked: <b>' + h(a.title) + '</b></div>'; });
+  html += '<p class="muted" style="margin-top:12px">You also found a ' + h(tokenFor(rec).icon + ' ' + tokenFor(rec).name) + '!</p>' +
+    '<button class="btn" data-act="closeModal" style="margin-top:6px">Lovely!</button></div>';
+  openModal(html, 'celebrate');
+  setTimeout(function () { var b = $('celebBar'); if (b) b.style.width = li.pct + '%'; }, 60);
+  confetti();
+}
+function confetti() {
+  var bits = ['🌸', '🍃', '✨', '🌼', '🍀'];
+  for (var i = 0; i < 22; i++) {
+    var s = document.createElement('span');
+    s.className = 'petal'; s.textContent = pick(bits);
+    s.style.left = Math.random() * 100 + 'vw';
+    s.style.animationDuration = (2.4 + Math.random() * 2) + 's';
+    s.style.animationDelay = (Math.random() * 0.8) + 's';
+    document.body.appendChild(s);
+    (function (el) { setTimeout(function () { el.remove(); }, 5200); })(s);
+  }
+}
+
+/* ---------- 6. RENDERING ---------- */
+var TABS = [['home', 'Home', '🏡'], ['quests', 'Quests', '📜'], ['explore', 'Explore', '🧭'], ['friends', 'Friends', '🫂'], ['profile', 'Profile', '🌟']];
+
+function showTab(t) {
+  ui.tab = t;
+  document.querySelectorAll('.view').forEach(function (v) { v.classList.toggle('active', v.id === 'view-' + t); });
+  document.querySelectorAll('#nav button').forEach(function (b) {
+    if (b.dataset.v === t) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
+  });
+  window.scrollTo({ top: 0 });
+  try { sessionStorage.setItem('lq-tab', t); } catch (e) {}
+}
+
+function avatarHtml(av, online, big) {
+  return '<span class="avatar' + (big ? ' big' : '') + '">' + h(av) +
+    (online === undefined ? '' : '<span class="dot' + (online ? ' on' : '') + '"></span>') + '</span>';
+}
+function tagsHtml(q) {
+  return '<div class="tags"><span class="tag">' + h(q.cat) + '</span><span class="tag ' + h(q.difficulty) + '">' + h(q.difficulty) + '</span>' +
+    (q.group ? '<span class="tag group">Group</span>' : '') + '</div>';
+}
+function questCard(q) {
+  var meta = CAT_META[q.cat] || CAT_META['Exploration'];
+  return '<article class="qcard ' + meta.cls + '"><div class="qtop"><span class="qicon">' + h(q.icon) + '</span><div><h3>' + h(q.name) + '</h3>' + tagsHtml(q) + '</div></div>' +
+    '<p>' + h(q.desc) + '</p><div class="qfoot"><span class="xp">+' + q.xp + ' XP</span><div class="btns">' +
+    '<button class="btn ghost small" data-act="remove" data-id="' + h(q.id) + '" aria-label="Remove quest ' + h(q.name) + '">🗑 Remove</button>' +
+    '<button class="btn small" data-act="start" data-id="' + h(q.id) + '">' + (q.started ? '▶ Continue' : '▶ Start') + '</button></div></div></article>';
+}
+
+function renderHeader() {
+  var li = levelInfo(S.xp);
+  $('levelPill').textContent = 'Lv ' + li.lvl + ' · ' + rankFor(li.lvl);
+}
+
+function renderHome() {
+  var li = levelInfo(S.xp);
+  var hr = new Date().getHours();
+  var greet = hr < 12 ? 'Good morning' : hr < 18 ? 'Good afternoon' : 'Good evening';
+  var line = WELCOME_LINES[Math.floor(Date.now() / 86400000) % WELCOME_LINES.length];
+  var today = S.available.slice(0, 3);
+  var activeQ = S.active && S.active.kind === 'solo' ? findAvail(S.active.id) : null;
+  var party = S.social.party;
+
+  var html = '<div class="card hero"><svg class="deco" viewBox="0 0 32 32" aria-hidden="true"><use href="#flower"/></svg>' +
+    '<div style="display:flex;gap:14px;align-items:center;margin-bottom:12px">' + avatarHtml(S.profile.avatar, undefined, true) +
+    '<div><h1>' + greet + ', ' + h(S.profile.name) + '!</h1><p class="muted" style="margin:4px 0 0">' + h(line) + '</p></div></div>' +
+    '<div class="barlabel"><span>Level ' + li.lvl + ' · ' + h(rankFor(li.lvl)) + '</span><span>' + li.into + ' / ' + li.need + ' XP</span></div>' +
+    '<div class="bar"><i style="width:' + li.pct + '%"></i></div>' +
+    '<p class="hint" style="margin:8px 0 0">' + (li.need - li.into) + ' XP until level ' + (li.lvl + 1) + '</p></div>';
+
+  if (activeQ) {
+    html += '<div class="card" style="background:var(--butter);border-color:#efdc8a"><div class="row" style="border:0;padding:0"><span class="qicon">' + h(activeQ.icon) + '</span>' +
+      '<div class="grow"><b>Quest in progress</b><small>' + h(activeQ.name) + '</small></div><button class="btn small" data-act="start" data-id="' + h(activeQ.id) + '">Continue</button></div></div>';
+  }
+
+  html += '<div class="tiles"><div class="tile"><b>' + S.completed.length + '</b><span>Quests done</span></div>' +
+    '<div class="tile"><b>' + S.xp + '</b><span>Total XP</span></div>' +
+    '<div class="tile"><b>' + streak() + '🔥</b><span>Day streak</span></div>' +
+    '<div class="tile"><b>' + (party.members.length + 1) + '/' + MAX_PARTY + '</b><span>Party size</span></div></div>';
+
+  html += '<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px"><h2 style="margin:0">☀️ Today\'s quests</h2>' +
+    '<button class="btn soft small" data-act="nav" data-v="quests">See all quests</button></div><div class="grid">' +
+    (today.length ? today.map(questCard).join('') : '<div class="empty">Your board is clear. Tap “Random quest” to find your next adventure.</div>') + '</div></div>';
+
+  html += '<div class="cols"><div class="card"><h2>✨ Quick actions</h2><div class="btns">' +
+    '<button class="btn" data-act="random">🎲 Random quest</button>' +
+    '<button class="btn soft" data-act="nav" data-v="explore">🧭 Explore</button>' +
+    '<button class="btn soft" data-act="nav" data-v="friends">🫂 Party up</button>' +
+    '<button class="btn soft" data-act="nav" data-v="profile">🌟 My profile</button></div></div>';
+
+  html += '<div class="card"><h2>🌿 Progress overview</h2>';
+  CATS.forEach(function (c) {
+    var n = countCat(S, c), pct = Math.min(100, n * 10);
+    html += '<div class="catbar"><span>' + CAT_META[c].icon + ' ' + h(c) + '</span><div class="bar" style="height:12px"><i style="width:' + pct + '%"></i></div><span>' + n + '</span></div>';
+  });
+  html += '<p class="hint" style="margin:6px 0 0">' + Object.keys(S.unlocked).length + ' of ' + ACHIEVEMENTS.length + ' achievements unlocked</p></div></div>';
+  $('view-home').innerHTML = html;
+}
+
+function renderQuests() {
+  var filters = ['All'].concat(CATS);
+  $('questFilters').innerHTML = filters.map(function (c) {
+    return '<button class="chip' + (ui.qfilter === c ? ' on' : '') + '" data-act="filter" data-v="' + h(c) + '">' + (c === 'All' ? '🌿' : CAT_META[c].icon) + ' ' + h(c) + '</button>';
+  }).join('');
+  var list = S.available.filter(function (q) { return ui.qfilter === 'All' || q.cat === ui.qfilter; });
+  $('availCount').textContent = S.available.length;
+  $('availableList').innerHTML = list.length ? list.map(questCard).join('') :
+    '<div class="empty">' + (S.available.length ? 'No quests in this category right now.' : 'Your quest board is empty. Generate a random quest or create your own!') + '</div>';
+
+  $('completedList').innerHTML = S.completed.length ? S.completed.slice(0, 20).map(function (q) {
+    return '<div class="row"><span class="qicon">' + h(q.icon) + '</span><div class="grow"><b>' + h(q.name) + '</b><small>' + h(q.cat) + (q.group ? ' · group quest' : '') + ' · ' + h(q.date) + '</small></div><span class="xp">✓ +' + q.xp + ' XP</span></div>';
+  }).join('') : '<div class="empty">Completed quests will appear here.</div>';
+
+  $('removedCount').textContent = S.removed.length;
+  $('removedList').innerHTML = S.removed.length ? S.removed.map(function (q) {
+    return '<div class="row"><span class="qicon">' + h(q.icon) + '</span><div class="grow"><b>' + h(q.name) + '</b><small>' + h(q.cat) + '</small></div><button class="btn soft small" data-act="restore" data-id="' + h(q.id) + '">Restore</button></div>';
+  }).join('') : '<div class="empty">Nothing removed.</div>';
+}
+
+function renderExplore() {
+  $('exploreFilters').innerHTML = EXPLORE_TAGS.map(function (t) {
+    return '<button class="chip' + (ui.exfilter === t ? ' on' : '') + '" data-act="exFilter" data-v="' + h(t) + '">' + h(t) + '</button>';
+  }).join('');
+  var ideas = EXPLORE_IDEAS.filter(function (e) { return ui.exfilter === 'All' || e.tag === ui.exfilter; });
+  $('exploreList').innerHTML = ideas.map(function (e) { return ideaCard(e); }).join('');
+
+  var s = ui.surprise;
+  $('surpriseBox').innerHTML = s ? '<div class="card hero"><h2>✨ Today\'s surprise</h2>' + ideaCard(s, true) + '</div>' : '';
+
+  $('huntList').innerHTML = HUNTS.map(function (hu) {
+    var st = S.hunts[hu.id] || { checked: [], claimed: false };
+    var done = st.checked.length, all = done === hu.items.length;
+    var html = '<div class="card" style="margin:0"><div class="qtop"><span class="qicon">' + hu.icon + '</span><div><h3>' + h(hu.title) + '</h3><span class="xp">+' + hu.xp + ' XP</span></div></div><div style="margin:10px 0">';
+    hu.items.forEach(function (it, i) {
+      html += '<label class="check"><input type="checkbox" data-change="hunt" data-id="' + hu.id + '" data-i="' + i + '"' + (st.checked.indexOf(i) !== -1 ? ' checked' : '') + (st.claimed ? ' disabled' : '') + '> ' + h(it) + '</label>';
+    });
+    html += '</div><div class="barlabel"><span>' + done + ' / ' + hu.items.length + ' found</span></div>';
+    if (st.claimed) html += '<button class="btn soft small" data-act="huntReset" data-id="' + hu.id + '">🔄 Play again</button>';
+    else html += '<button class="btn small" data-act="huntClaim" data-id="' + hu.id + '"' + (all ? '' : ' disabled') + '>🏁 Claim reward</button>';
+    return html + '</div>';
+  }).join('');
+
+  $('placeList').innerHTML = S.places.length ? S.places.map(function (p, i) {
+    return '<div class="row"><span>📍</span><div class="grow">' + h(p) + '</div><button class="btn ghost small" data-act="removePlace" data-i="' + i + '" aria-label="Remove place ' + h(p) + '">✕</button></div>';
+  }).join('') : '<div class="empty">No saved places yet.</div>';
+}
+function ideaCard(e, inSurprise) {
+  var meta = CAT_META[e.cat];
+  return '<article class="qcard ' + meta.cls + '"' + (inSurprise ? ' style="box-shadow:none"' : '') + '><div class="qtop"><span class="qicon">' + e.icon + '</span><div><h3>' + h(e.title) + '</h3>' +
+    '<div class="tags"><span class="tag">' + h(e.tag) + '</span><span class="tag ' + e.diff + '">' + e.diff + '</span></div></div></div><p>' + h(e.desc) + '</p>' +
+    '<div class="qfoot"><span class="xp">+' + e.xp + ' XP</span><button class="btn small" data-act="addIdea" data-id="' + e.id + '">＋ Add as quest</button></div></article>';
+}
+
+function renderFriends() {
+  var so = S.social, p = so.party, size = p.members.length + 1;
+
+  /* Party lobby */
+  var html = '<div class="members">' +
+    '<div class="member">' + avatarHtml(S.profile.avatar, true) + '<b>' + h(S.profile.name) + '</b><small class="muted">You · leader</small></div>';
+  p.members.forEach(function (m) {
+    var u = userOf(m);
+    html += '<div class="member">' + avatarHtml(u.avatar, u.online) + '<b>' + h(u.name) + '</b><small class="muted">Lv ' + u.level + '</small>' +
+      (p.groupQuest ? '' : '<button class="btn ghost small" data-act="kick" data-id="' + m + '">Remove</button>') + '</div>';
+  });
+  p.pending.forEach(function (m) {
+    html += '<div class="member pending">' + avatarHtml(userOf(m).avatar) + '<b>' + h(userOf(m).name) + '</b><small>Invited… waiting</small></div>';
+  });
+  for (var i = size + p.pending.length; i < MAX_PARTY; i++) html += '<div class="member slot">＋<small>Open slot</small></div>';
+  html += '</div><div class="barlabel"><span>Party size</span><span>' + size + ' / ' + MAX_PARTY + '</span></div>';
+  html += (p.members.length || p.pending.length ? '<button class="btn danger small" data-act="leaveParty">🚪 Leave party</button>' :
+    '<p class="hint">Your party is just you for now. Press <b>Invite to Party</b> next to an online friend to team up.</p>');
+  $('partyBox').innerHTML = html;
+
+  /* Group quests */
+  var gq = p.groupQuest;
+  if (gq) {
+    var q = gq.quest, keys = Object.keys(gq.status);
+    var doneCount = keys.filter(function (k) { return gq.status[k]; }).length;
+    var bonus = Math.round(q.xp * 0.1 * p.members.length);
+    var g = '<article class="qcard c-soc" style="box-shadow:none"><div class="qtop"><span class="qicon">' + h(q.icon) + '</span><div><h3>' + h(q.name) + '</h3>' + tagsHtml(q) + '</div></div>' +
+      '<p>' + h(q.desc) + '</p><div class="qfoot"><span class="xp">+' + q.xp + ' XP</span><span class="xp" style="background:var(--butter)">+' + bonus + ' party bonus</span></div></article>';
+    g += '<div class="barlabel"><span>Completion</span><span>' + doneCount + ' / ' + keys.length + ' done</span></div><div class="bar"><i style="width:' + Math.round(doneCount / keys.length * 100) + '%"></i></div>';
+    g += '<div style="margin-top:8px"><div class="row">' + avatarHtml(S.profile.avatar) + '<div class="grow"><b>You</b><small>' + (gq.status.me ? '✅ Finished your part' : '⏳ In progress') + '</small></div>' +
+      (gq.status.me ? '' : '<button class="btn small" data-act="groupMine">I did my part</button>') + '</div>';
+    p.members.forEach(function (m) {
+      var u = userOf(m);
+      g += '<div class="row">' + avatarHtml(u.avatar) + '<div class="grow"><b>' + h(u.name) + '</b><small>' + (gq.status[m] ? '✅ Finished their part' : '⏳ In progress (simulated)') + '</small></div>' +
+        (gq.status[m] ? '' : '<button class="btn soft small" data-act="groupDemo" data-id="' + m + '" title="Demo only: pretend this friend finished">Mark done (demo)</button>') + '</div>';
+    });
+    g += '</div><p class="hint">Real friends would tick off their own part. In this prototype you can mark demo friends as done yourself, so you can try the full flow.</p>' +
+      '<button class="btn danger small" data-act="groupCancel">Cancel group quest</button>';
+    $('groupBox').innerHTML = g;
+  } else {
+    var ready = p.members.length >= 1;
+    $('groupBox').innerHTML = (ready ? '<p class="hint">Choose a quest to start with your party of ' + size + '. Everyone earns the XP, plus a bonus for teamwork.</p>' :
+      '<p class="hint">Invite at least one friend to your party to start a group quest.</p>') +
+      S.groupQuests.map(function (q) {
+        return '<div class="row"><span class="qicon">' + h(q.icon) + '</span><div class="grow"><b>' + h(q.name) + '</b><small>' + h(q.desc) + '</small>' + tagsHtml(q) + '</div>' +
+          '<div style="text-align:right"><span class="xp">+' + q.xp + '</span><div class="btns" style="margin-top:6px;justify-content:flex-end"><button class="btn small" data-act="startGroup" data-id="' + h(q.id) + '"' + (ready ? '' : ' disabled') + '>Start</button>' +
+          (q.custom ? '<button class="btn ghost small" data-act="removeGroupIdea" data-id="' + h(q.id) + '">✕</button>' : '') + '</div></div></div>';
+      }).join('');
+  }
+
+  /* Friends list */
+  $('friendList').innerHTML = so.friends.length ? so.friends.map(function (id) {
+    var u = userOf(id);
+    var inParty = p.members.indexOf(id) !== -1, pend = p.pending.indexOf(id) !== -1;
+    var label = inParty ? '✔ In party' : pend ? 'Invited…' : '🎈 Invite to Party';
+    var disabled = inParty || pend || !u.online;
+    return '<div class="row">' + avatarHtml(u.avatar, u.online) + '<div class="grow"><b>' + h(u.name) + '</b><small>Lv ' + u.level + ' · ' + (u.online ? 'Online' : 'Offline') + '</small></div>' +
+      '<div class="btns" style="justify-content:flex-end"><button class="btn small" data-act="invite" data-id="' + id + '"' + (disabled ? ' disabled' : '') + '>' + (u.online || inParty || pend ? label : 'Offline') + '</button>' +
+      '<button class="btn ghost small" data-act="friendProfile" data-id="' + id + '">Profile</button></div></div>';
+  }).join('') : '<div class="empty">No friends yet. Use “Find friends” to search for a username.</div>';
+
+  /* Requests */
+  var rq = '';
+  so.requests.forEach(function (id) {
+    var u = userOf(id);
+    rq += '<div class="row">' + avatarHtml(u.avatar, u.online) + '<div class="grow"><b>' + h(u.name) + '</b><small>Wants to be friends</small></div><div class="btns">' +
+      '<button class="btn small" data-act="acceptReq" data-id="' + id + '">Accept</button><button class="btn ghost small" data-act="declineReq" data-id="' + id + '">Decline</button></div></div>';
+  });
+  so.sent.forEach(function (id) {
+    rq += '<div class="row">' + avatarHtml(userOf(id).avatar) + '<div class="grow"><b>' + h(userOf(id).name) + '</b><small>Request sent – waiting (simulated reply)</small></div></div>';
+  });
+  $('requestList').innerHTML = rq || '<div class="empty">No pending requests.</div>';
+
+  /* Search results */
+  var sr = '';
+  if (ui.searchQ) {
+    if (!ui.searchResults.length) sr = '<div class="empty">No adventurers found for “' + h(ui.searchQ) + '”. In this demo, try “kai”, “mina” or “morgan”.</div>';
+    ui.searchResults.forEach(function (id) {
+      var u = userOf(id), sent = so.sent.indexOf(id) !== -1, got = so.requests.indexOf(id) !== -1;
+      sr += '<div class="row">' + avatarHtml(u.avatar, u.online) + '<div class="grow"><b>' + h(u.name) + '</b><small>' + h(u.bio) + '</small></div>' +
+        (got ? '<button class="btn small" data-act="acceptReq" data-id="' + id + '">Accept</button>' :
+          '<button class="btn small" data-act="addFriend" data-id="' + id + '"' + (sent ? ' disabled' : '') + '>' + (sent ? 'Request sent' : '＋ Add') + '</button>') + '</div>';
+    });
+  }
+  $('searchResults').innerHTML = sr;
+
+  /* Plan invitees (keep ticked boxes across re-renders) */
+  var ticked = {};
+  document.querySelectorAll('#planInvitees input:checked').forEach(function (i) { ticked[i.value] = 1; });
+  $('planInvitees').innerHTML = so.friends.length ? so.friends.map(function (id) {
+    return '<label class="check"><input type="checkbox" name="inv" value="' + id + '"' + (ticked[id] ? ' checked' : '') + '> ' + avatarSmall(id) + ' ' + h(userOf(id).name) + '</label>';
+  }).join('') : '<p class="hint">Add friends to invite them.</p>';
+
+  /* Plans */
+  $('planList').innerHTML = S.plans.map(function (pl) {
+    var who = (pl.who || []).map(function (w) { return h(DEMO_USERS[w] ? DEMO_USERS[w].name : w); }).join(', ') || 'Just you so far';
+    return '<div class="row"><span class="qicon">📅</span><div class="grow"><b>' + h(pl.title) + '</b><small>' + h(pl.when) + ' · ' + h(pl.where) + '<br>With: ' + who + '</small></div>' +
+      '<div class="btns" style="flex-direction:column"><button class="btn soft small" data-act="planToGroup" data-id="' + pl.id + '">Make group quest</button><button class="btn ghost small" data-act="planDelete" data-id="' + pl.id + '">Delete</button></div></div>';
+  }).join('');
+
+  /* Chat */
+  $('chatLog').innerHTML = S.chat.length ? S.chat.map(function (m) {
+    return '<div class="bubble">' + h(m.text) + '<small>You · ' + h(m.at) + '</small></div>';
+  }).join('') : '<div class="empty" style="border:0">Start the conversation by suggesting an adventure.</div>';
+  var log = $('chatLog'); log.scrollTop = log.scrollHeight;
+
+  /* Privacy & safety */
+  var pr = so.privacy;
+  var pv = '<label class="check"><input type="checkbox" data-change="privacy" data-key="online"' + (pr.online ? ' checked' : '') + '> Show me as online to friends</label>' +
+    '<label class="check"><input type="checkbox" data-change="privacy" data-key="requests"' + (pr.requests ? ' checked' : '') + '> Allow friend requests</label>' +
+    '<label class="check"><input type="checkbox" data-change="privacy" data-key="showLevel"' + (pr.showLevel ? ' checked' : '') + '> Show my level on my profile</label>' +
+    '<p class="hint" style="margin-top:8px">These choices are saved now and will be sent to the server once a real backend is added.</p>' +
+    '<h3 style="margin-top:12px">Blocked (' + so.blocked.length + ')</h3>';
+  pv += so.blocked.length ? so.blocked.map(function (id) {
+    return '<div class="row">' + avatarHtml(userOf(id).avatar) + '<div class="grow"><b>' + h(userOf(id).name) + '</b></div><button class="btn soft small" data-act="unblock" data-id="' + id + '">Unblock</button></div>';
+  }).join('') : '<p class="hint">Nobody blocked.</p>';
+  pv += '<div class="notice">You never need to share your phone number, email or location. Meet in public places, tell someone you trust your plans, and use Block or Report from any friend\'s profile if something feels wrong. Reports made here are saved on this device (' + so.reports.length + ' so far).</div>';
+  $('privacyBox').innerHTML = pv;
+}
+function avatarSmall(id) { return h(userOf(id).avatar); }
+
+function renderProfile() {
+  var li = levelInfo(S.xp), unlockedN = Object.keys(S.unlocked).length;
+  var html = '<div class="pagehead"><div><h1>Your Profile</h1><p>Your cosy corner of the world.</p></div></div>' +
+    '<div class="card hero"><div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">' + avatarHtml(S.profile.avatar, undefined, true) +
+    '<div style="flex:1;min-width:200px"><label for="nameInput">Username</label><input class="field" id="nameInput" data-change="rename" maxlength="20" value="' + h(S.profile.name) + '" style="margin-bottom:4px">' +
+    '<span class="pill">Level ' + li.lvl + ' · ' + h(rankFor(li.lvl)) + '</span></div></div>' +
+    '<div class="barlabel"><span>' + S.xp + ' total XP</span><span>' + li.into + ' / ' + li.need + ' to level ' + (li.lvl + 1) + '</span></div><div class="bar"><i style="width:' + li.pct + '%"></i></div>' +
+    '<h3 style="margin-top:16px">Choose your avatar</h3><div class="avatars">' +
+    AVATARS.map(function (a) { return '<button class="' + (S.profile.avatar === a ? 'on' : '') + '" data-act="avatar" data-v="' + a + '" aria-label="Avatar ' + a + '">' + a + '</button>'; }).join('') + '</div></div>';
+
+  var groupN = S.completed.filter(function (q) { return q.group; }).length;
+  html += '<div class="tiles"><div class="tile"><b>' + S.completed.length + '</b><span>Quests completed</span></div>' +
+    '<div class="tile"><b>' + S.xp + '</b><span>Total XP</span></div>' +
+    '<div class="tile"><b>' + uniqueDays(S) + '</b><span>Active days</span></div>' +
+    '<div class="tile"><b>' + streak() + '🔥</b><span>Current streak</span></div>' +
+    '<div class="tile"><b>' + groupN + '</b><span>Group quests</span></div>' +
+    '<div class="tile"><b>' + unlockedN + '/' + ACHIEVEMENTS.length + '</b><span>Achievements</span></div></div>';
+
+  html += '<div class="cols"><div class="card"><h2>📊 Quests by category</h2>';
+  var max = Math.max(1, Math.max.apply(null, CATS.map(function (c) { return countCat(S, c); })));
+  CATS.forEach(function (c) {
+    var n = countCat(S, c);
+    html += '<div class="catbar"><span>' + CAT_META[c].icon + ' ' + h(c) + '</span><div class="bar" style="height:12px"><i style="width:' + Math.round(n / max * 100) + '%"></i></div><span>' + n + '</span></div>';
+  });
+  html += '</div><div class="card"><h2>🎒 Inventory &amp; reward tokens</h2>';
+  var inv = {};
+  S.tokens.forEach(function (t) { var k = t.icon + '|' + t.name; inv[k] = (inv[k] || 0) + 1; });
+  var keys = Object.keys(inv);
+  html += keys.length ? '<div class="inv">' + keys.map(function (k) {
+    var parts = k.split('|'); return '<div class="item"><span>' + h(parts[0]) + '</span><b>×' + inv[k] + '</b><small>' + h(parts[1]) + '</small></div>';
+  }).join('') + '</div>' : '<div class="empty">Complete quests to collect tokens.</div>';
+  html += '<p class="hint" style="margin:10px 0 0">Tokens are keepsakes for now – future updates could let you spend them on decorations.</p></div></div>';
+
+  html += '<div class="card"><h2>🏆 Achievements</h2><div class="ach">' + ACHIEVEMENTS.map(function (a) {
+    var on = !!S.unlocked[a.id];
+    return '<div class="achcard' + (on ? '' : ' locked') + '"><span class="qicon">' + (on ? a.icon : '🔒') + '</span><div><b>' + h(a.title) + '</b><small>' + h(a.desc) + '</small><small><b>' + (on ? 'Unlocked ' + h(S.unlocked[a.id]) : 'Locked') + '</b></small></div></div>';
+  }).join('') + '</div></div>';
+
+  html += '<div class="card"><h2>📖 Quest history</h2>' + (S.completed.length ? S.completed.slice(0, 15).map(function (q) {
+    return '<div class="row"><span class="qicon">' + h(q.icon) + '</span><div class="grow"><b>' + h(q.name) + '</b><small>' + h(q.cat) + (q.group ? ' · group of ' + q.partySize : '') + ' · ' + h(q.date) + '</small></div><span class="xp">+' + q.xp + ' XP</span></div>';
+  }).join('') : '<div class="empty">Your story starts with your first quest.</div>') + '</div>';
+
+  html += '<div class="card"><h2>⚙️ Settings</h2><p class="hint">Everything is saved in this browser only. Clearing site data or resetting will remove it.</p>' +
+    '<button class="btn danger small" data-act="resetAll">Reset all progress</button></div>';
+  $('view-profile').innerHTML = html;
+}
+
+function render() {
+  renderHeader(); renderHome(); renderQuests(); renderExplore(); renderFriends(); renderProfile();
+}
+
+/* ---------- 7. EVENTS ---------- */
+var actions = {
+  nav: function (d) { showTab(d.v); },
+  start: function (d) { startQuest(d.id); },
+  pause: function () { pauseQuest(); },
+  complete: function (d) { completeQuest(d.id); },
+  remove: function (d) { removeQuest(d.id); },
+  restore: function (d) { restoreQuest(d.id); },
+  random: function () { proposeRandom(); },
+  randomAccept: function () { if (ui.proposal) { var q = ui.proposal; ui.proposal = null; closeModal(); addQuest(q, 'Quest accepted!'); } },
+  closeModal: function () { closeModal(); },
+  confirmOk: function () { var cb = confirmCb; confirmCb = null; closeModal(); if (cb) cb(); },
+  filter: function (d) { ui.qfilter = d.v; renderQuests(); },
+  exFilter: function (d) { ui.exfilter = d.v; renderExplore(); },
+  surprise: function () { ui.surprise = pick(EXPLORE_IDEAS); renderExplore(); },
+  addIdea: function (d) {
+    var e = EXPLORE_IDEAS.find(function (x) { return x.id === d.id; });
+    if (!e) return;
+    if (S.available.some(function (q) { return q.name === e.title; })) { toast('That quest is already on your board.'); return; }
+    addQuest({ id: uid(), name: e.title, desc: e.desc, cat: e.cat, difficulty: e.diff, xp: e.xp, icon: e.icon }, 'Added to your quest board!');
+  },
+  huntClaim: function (d) {
+    var hu = HUNTS.find(function (x) { return x.id === d.id; }), st = S.hunts[d.id];
+    if (!hu || !st || st.claimed || st.checked.length !== hu.items.length) return;
+    st.claimed = true;
+    awardCompletion({ name: hu.title, desc: 'Scavenger hunt completed.', cat: 'Exploration', difficulty: 'Medium', xp: hu.xp, icon: hu.icon });
+  },
+  huntReset: function (d) { S.hunts[d.id] = { checked: [], claimed: false }; save(); render(); },
+  removePlace: function (d) { S.places.splice(Number(d.i), 1); save(); render(); },
+  addFriend: function (d) { Social.sendRequest(d.id); },
+  acceptReq: function (d) { Social.acceptRequest(d.id); },
+  declineReq: function (d) { Social.declineRequest(d.id); },
+  invite: function (d) { Social.invite(d.id); },
+  kick: function (d) { Social.dropFromParty(d.id); save(); render(); },
+  friendProfile: function (d) { showFriendProfile(d.id); },
+  removeFriend: function (d) {
+    var u = userOf(d.id);
+    confirmBox({ title: 'Remove ' + u.name + '?', text: 'They will be removed from your friends list and your party.', ok: 'Remove friend', danger: true,
+      onOk: function () { Social.removeFriend(d.id); toast('Friend removed.'); } });
+  },
+  block: function (d) {
+    var u = userOf(d.id);
+    confirmBox({ title: 'Block ' + u.name + '?', text: 'They will be removed from your friends and party, and cannot send you requests or invites. You can unblock them in Privacy & safety.', ok: 'Block', danger: true,
+      onOk: function () { Social.block(d.id); toast(u.name + ' blocked.'); } });
+  },
+  unblock: function (d) { Social.unblock(d.id); toast('Unblocked.'); },
+  reportOpen: function (d) { showReportForm(d.id); },
+  leaveParty: function () {
+    var go = function () { Social.leaveParty(); toast('You left the party.'); };
+    if (S.social.party.groupQuest) confirmBox({ title: 'Leave the party?', text: 'Your current group quest will be cancelled. No XP is awarded.', ok: 'Leave party', danger: true, onOk: go });
+    else go();
+  },
+  startGroup: function (d) { if (Social.startGroupQuest(d.id)) toast('Group quest started! Go have fun together.'); },
+  groupMine: function () { Social.markDone('me'); },
+  groupDemo: function (d) { Social.markDone(d.id); },
+  groupCancel: function () {
+    confirmBox({ title: 'Cancel this group quest?', text: 'No XP will be awarded for it.', ok: 'Cancel quest', danger: true, onOk: function () { Social.cancelGroupQuest(); toast('Group quest cancelled.'); } });
+  },
+  removeGroupIdea: function (d) { S.groupQuests = S.groupQuests.filter(function (g) { return g.id !== d.id; }); save(); render(); },
+  planToGroup: function (d) {
+    var pl = S.plans.find(function (x) { return x.id === d.id; });
+    if (!pl) return;
+    S.groupQuests.unshift({ id: uid(), name: pl.title, desc: 'Meet at ' + pl.where + ' (' + pl.when + ') and make it happen together.', cat: 'Social', difficulty: 'Medium', xp: 90, icon: '📅', group: true, custom: true });
+    save(); render(); toast('Added to your group quests!');
+  },
+  planDelete: function (d) { S.plans = S.plans.filter(function (x) { return x.id !== d.id; }); save(); render(); },
+  clearChat: function () { S.chat = []; save(); render(); },
+  avatar: function (d) { S.profile.avatar = d.v; save(); render(); },
+  resetAll: function () {
+    confirmBox({ title: 'Reset all progress?', text: 'This permanently erases your XP, quests, achievements, friends and settings on this device.', ok: 'Erase everything', danger: true,
+      onOk: function () {
+        try { localStorage.removeItem(STORE_KEY); } catch (e) {}
+        S = defaultState(); topUpQuests(); seedGroupQuests(); save(); ui.searchQ = ''; ui.searchResults = []; showTab('home'); render(); toast('Fresh start! 🌱');
+      } });
+  }
+};
+
+function showFriendProfile(id) {
+  var u = userOf(id), p = S.social.party;
+  var inParty = p.members.indexOf(id) !== -1 || p.pending.indexOf(id) !== -1;
+  openModal('<div class="center">' + avatarHtml(u.avatar, u.online, true) + '<h2 style="margin-top:10px">' + h(u.name) + '</h2>' +
+    '<p class="muted">Level ' + u.level + ' · ' + h(rankFor(u.level)) + ' · ' + (u.online ? 'Online' : 'Offline') + '</p><p>' + h(u.bio) + '</p>' +
+    '<p class="hint">Demo profile – a real version would only show what each person chooses to share.</p></div>' +
+    '<div class="btns" style="justify-content:center;margin-top:12px">' +
+    '<button class="btn" data-act="invite" data-id="' + id + '"' + (inParty || !u.online ? ' disabled' : '') + '>🎈 Invite to Party</button>' +
+    '<button class="btn ghost" data-act="removeFriend" data-id="' + id + '">Remove friend</button>' +
+    '<button class="btn danger" data-act="block" data-id="' + id + '">Block</button>' +
+    '<button class="btn danger" data-act="reportOpen" data-id="' + id + '">Report</button>' +
+    '<button class="btn soft" data-act="closeModal">Close</button></div>', 'profile');
+}
+function showReportForm(id) {
+  openModal('<h2>Report ' + h(userOf(id).name) + '</h2><form id="reportForm" data-user="' + h(id) + '">' +
+    '<label for="repReason">Reason</label><select class="field" id="repReason"><option>Unkind or bullying behaviour</option><option>Spam or fake account</option><option>Inappropriate content</option><option>Asked for personal details or my location</option><option>Something else</option></select>' +
+    '<label for="repNote">Anything else we should know? (optional)</label><textarea class="field" id="repNote" rows="3" maxlength="300"></textarea>' +
+    '<label class="check"><input type="checkbox" id="repBlock" checked> Also block this person</label>' +
+    '<div class="btns" style="margin-top:10px"><button class="btn danger" type="submit">Send report</button><button class="btn ghost" type="button" data-act="closeModal">Cancel</button></div></form>' +
+    '<p class="hint" style="margin-top:10px">In this prototype the report is saved on this device only. With a real backend it would reach a moderator.</p>', 'report');
+}
+
+document.addEventListener('click', function (e) {
+  var t = e.target.closest('[data-act]');
+  if (t && actions[t.dataset.act]) { actions[t.dataset.act](t.dataset, t); return; }
+  if (e.target === $('modal')) dismissModal();
+});
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') dismissModal(); });
+
+document.addEventListener('change', function (e) {
+  var t = e.target, kind = t.dataset && t.dataset.change;
+  if (!kind) return;
+  if (kind === 'hunt') {
+    var st = S.hunts[t.dataset.id] || (S.hunts[t.dataset.id] = { checked: [], claimed: false });
+    var i = Number(t.dataset.i), idx = st.checked.indexOf(i);
+    if (t.checked && idx === -1) st.checked.push(i); else if (!t.checked && idx !== -1) st.checked.splice(idx, 1);
+    save(); renderExplore();
+  } else if (kind === 'privacy') {
+    S.social.privacy[t.dataset.key] = t.checked; save();
+  } else if (kind === 'rename') {
+    var v = t.value.replace(/[^A-Za-z0-9_ \-]/g, '').trim().slice(0, 20);
+    if (v.length < 2) { toast('Usernames need at least 2 letters or numbers.'); t.value = S.profile.name; return; }
+    S.profile.name = v; save(); render(); toast('Username updated.');
+  }
+});
+
+document.addEventListener('submit', function (e) {
+  var f = e.target; e.preventDefault();
+  if (f.id === 'customForm') {
+    var name = $('cqName').value.trim();
+    if (!name) { toast('Give your quest a name first.'); return; }
+    var diff = $('cqDiff').value;
+    S.customCount++;
+    var q = { id: uid(), name: name, desc: $('cqDesc').value.trim() || 'A quest of your own making.', cat: $('cqCat').value, difficulty: diff, xp: DIFF_XP[diff], icon: CAT_META[$('cqCat').value].icon, custom: true };
+    var fresh = checkAchievements();
+    f.reset(); addQuest(q, 'Custom quest created!');
+    if (fresh.length) setTimeout(function () { toast('Achievement unlocked: ' + fresh[0].title + ' ' + fresh[0].icon); }, 1200);
+  } else if (f.id === 'placeForm') {
+    var v = $('placeInput').value.trim();
+    if (!v) return;
+    S.places.push(v); $('placeInput').value = ''; save(); render(); toast('Place saved.');
+  } else if (f.id === 'planForm') {
+    var who = Array.prototype.map.call(document.querySelectorAll('#planInvitees input:checked'), function (i) { return i.value; });
+    S.plans.unshift({ id: uid(), title: $('planTitle').value.trim(), when: $('planWhen').value.trim(), where: $('planWhere').value.trim(), who: who });
+    f.reset(); save(); render(); toast('Plan saved!');
+  } else if (f.id === 'chatForm') {
+    var text = $('chatInput').value.trim();
+    if (!text) return;
+    S.chat.push({ text: text, at: new Date().toLocaleString(), from: 'me' }); $('chatInput').value = ''; save(); render();
+  } else if (f.id === 'searchForm') {
+    var qq = $('searchInput').value.trim();
+    if (qq.length < 2) { toast('Type at least 2 letters of a username.'); return; }
+    ui.searchQ = qq; ui.searchResults = Social.search(qq); renderFriends();
+  } else if (f.id === 'reportForm') {
+    var uidTarget = f.dataset.user;
+    Social.report(uidTarget, $('repReason').value, $('repNote').value.trim());
+    var alsoBlock = $('repBlock').checked;
+    closeModal();
+    if (alsoBlock) Social.block(uidTarget); else render();
+    toast('Report saved on this device. Thank you for helping keep things kind.');
+  }
+});
+
+/* ---------- 8. INIT ---------- */
+function init() {
+  $('nav').innerHTML = TABS.map(function (t) {
+    return '<button data-act="nav" data-v="' + t[0] + '"><span aria-hidden="true">' + t[2] + '</span>' + t[1] + '</button>';
+  }).join('');
+  $('cqCat').innerHTML = CATS.map(function (c) { return '<option value="' + h(c) + '">' + CAT_META[c].icon + ' ' + h(c) + '</option>'; }).join('');
+
+  topUpQuests();
+  seedGroupQuests();
+  save();
+  render();
+
+  var tab = 'home';
+  try { tab = sessionStorage.getItem('lq-tab') || 'home'; } catch (e) {}
+  if (!TABS.some(function (t) { return t[0] === tab; })) tab = 'home';
+  showTab(tab);
+  window.scrollTo({ top: 0 });
+
+  // Resume a quest that was in progress when the page was closed.
+  if (S.active && S.active.kind === 'solo') {
+    var q = findAvail(S.active.id);
+    if (q) showQuestScreen(q); else { S.active = null; save(); }
+  }
+  // Resolve any simulated invitations/requests that were pending at reload.
+  S.social.party.pending.slice().forEach(function (id) { setTimeout(function () { Social.resolveInvite(id); }, 900); });
+  S.social.sent.slice().forEach(function (id) { setTimeout(function () { Social.resolveRequest(id); }, 1200); });
+}
+init();
+
+})();
+</script>
+</body>
+</html>
